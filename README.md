@@ -46,7 +46,7 @@
 개발기간 : 2022-05-06 ~ 2022-07-29<br>
 <br>
 기술스택 : <br>
-Java 8 / Spring Boot 2.7.0 / Gradle / Spring Data JPA / H2 <br>
+Java 8 / Spring Boot 2.7.0 / Gradle / Spring Data JPA / My SQL <br>
 JavaScript / Vue.js / jQuery 3.6.0<br>
 <br>
 <a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
