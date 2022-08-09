@@ -18,9 +18,9 @@
 <br>
 <br>
 
- 
 
-## :floppy_disk: **Contact**
+
+## :phone: **Contact**
 - - -
 <span style='font-size : 20px'> Email</span>
 >lhi3048@gmail.com
@@ -31,5 +31,25 @@
 <span style='font-size : 20px'> GitHub</span>
 >https://github.com/hoinlee-moi
 
+<br>
+<br>
+<br>
+<br>
+
+
+## :floppy_disk: **Project**
+- - -
+<br>
+
+### <span style="font-size : 18px">**1. Gogumacat**</span>
+><br>중고물품 대여 플랫폼 (팀 프로젝트)<br>
+개발기간 : 2022-05-06 ~ 2022-07-29<br>
+<br>
+기술스택 : <br>
+Java 8 / Spring Boot 2.7.0 / Gradle / Spring Data JPA / H2 <br>
+JavaScript / Vue.js / jQuery 3.6.0<br>
+<br>
+<a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
+<br>
 
 
