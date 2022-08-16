@@ -9,5 +9,10 @@ JavaScript / Vue.js / jQuery 3.6.0<br>
 <br>
 <a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
 <br>
-
+## ☝**Introduce**
+- - -
+<li>Career ㅡ 신입</li>
+<li>Birth ㅡ 1994</li>
+<li>Address ㅡ </li>
+<br>
 
