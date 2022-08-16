@@ -10,10 +10,18 @@ JavaScript / Vue.js / jQuery 3.6.0<br>
 <a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
 <br>
 
-## ☝**Introduce**
-- - -
-<li>Career ㅡ 신입</li>
-<li>Birth ㅡ 1994</li>
-<li>Address ㅡ </li>
+
+## 🧑**Contact**
+
+- **E-mail** :  lhi3048@gmail.com
+- **Blog** : [https://velog.io/@lee_moi](https://velog.io/@lee_moi)
+- **Github** : [https://github.com/hoinlee-moi](https://github.com/hoinlee-moi)
 <br>
 
+## ☝**introduce**
+- - -
+🧑🏻‍💻Junior Frontend Engineer
+<li>Career ㅡ 신입</li>
+<li>Birth ㅡ 1994</li>
+<li>Address ㅡ Seoul </li>
+<br>
