@@ -1,0 +1,95 @@
+변수
+데이터를 저장할 때 쓰이는 '이름이 붙는 저장소'로 javascript에선 let이란 키워드를 사용한다.
+
+let message = 'Hello!'; // 변수를 정의하고 값을 할당합니다.
+
+alert(message); // Hello!
+
+한번에 여러 변수를 선언하는 것도 가능
+let user = 'John',
+  age = 25,
+  msg = 'Hello';
+
+변수는 값이 변경되면 이전 데이터는 변수에서 제거된다.
+
+message = 'World!'; // 상단의 Hello!는 제거되고 World!가 저장
+alert(message); // World!
+
+변수 2개를 선언하고, 한 변수의 데이터를 다른 변수에 복사할 수도 있음
+
+let message02 = message; // message의 World!값을 message02에 복사
+alert(message02); // World!
+
+변수를 2번 선언하면 에러! 변수는 딱 한번만 선언하고, 선언한 변수를 참조할 땐 let없이 변수명만을 사용해 참조
+
+let err = "This";
+let err = "That"; // SyntaxError: 'message' has already been declared
+
+
+
+변수 명명 규칙!!
+1. 변수명에는 오직 문자와 숫자, 그리고 기호$와 _만 들어갈 수 있다. -> let $ = 1 , _ = 2 가능
+2. 첫 글자는 숫자가 될 수 없다.
+3. 여러 단어를 조합하여 변수명을 만들 땐 카멜 표기법(camelCase)이 흔히 사용 -> myVeryLongName
+4. 대소문자를 구별한다. -> apple과 AppLE는 서로 다른 변수
+5. 예약어 목록에 있는 단어는 변수명으로 사용할 수 없다. 이 단어들은 자바스크립트 내부에서 이미 사용중이기 때문
+-> let, class, return, function 등등
+
+
+
+
+
+
+상수! - 변화하지 않는 변수로 const를 사용
+
+const myBirthday = '18.04.1982';
+
+myBirthday = '01.01.2001'; // error, can't reassign the constant! <-말 그대로 상수(constant)이기 때문에 재 할당할 수 없다.
+
+변수값이 절대 변경되지 않을 것이라 확신하면, 값이 변경되는 것을 방지하며 다른 개발자들에게 상수라는 것을 알리기 위해 const를 사용하자.
+
+ 대문자 상수!! - 대문자 상수는 ‘하드 코딩한’ 값의 별칭을 만들 때 사용하자(실행 전에 이미 값을 알고 있고, 코드에서 직접 그 값을 쓰는 경우에 사용하죠.)
+
+기억하기 힘든 값을 변수에 할당해 별칭으로 사용하는 것은 널리 사용되는 관습
+이런 상수는 대문자와 밑줄로 구성된 이름으로 명명
+
+
+const COLOR_RED = "#F00";
+const COLOR_GREEN = "#0F0";
+const COLOR_BLUE = "#00F";
+const COLOR_ORANGE = "#FF7F00";
+
+ 색상을 고르고 싶을 때 별칭을 사용할 수 있게 됨
+let color = COLOR_ORANGE;
+alert(color); // #FF7F00
+대문자로 상수를 만들어 사용하면 다음과 같은 장점이 있다.
+
+COLOR_ORANGE는 "#FF7F00"보다 기억하기가 훨씬 쉬움
+COLOR_ORANGE를 사용하면 "#FF7F00"를 사용하는 것보다 오타를 낼 확률이 낮다.
+COLOR_ORANGE가 #FF7F00보다 훨씬 유의미하므로, 코드 가독성이 증가
+
+
+
+
+변수 명 팁 - 바람직한 변수명
+
+
+변수명은 간결하고, 명확해야 한다.
+1.userName이나 shoppingCart 처럼 사람이 읽을 수 있는 이름을 사용
+2. 무엇을 하고 있는지 명확히 알고 있지 않을 경우 외에는 줄임말이나 a,b,c 같은 짧은 이름을 피하자
+3. 최대한 서술적이고 간결하게 명명. data나 value는 나쁜 이름의 예시.
+이런 이름들은 아무것도 설명해 주지 않고 코드 문맥상 변수가 가리키는 데이터나 값이 아주 명확할 때만 이런 이름을 사용
+4. 자신만의 규칙이나 소속된 팀의 규칙을 따르자(구글이나 naver, 카카오 코딩 컨벤션 등)
+예시로 사이트 방문객을 user라 부르기로 했다면 이와 관련된 변수를 currentVisitor나 newManInTown이 아닌 currentUser나 newUser라고 짓자
+
+
+
+
+주의할 사항
+
+재사용을 할것인가 새로 만들것인가?
+변수를 재사용하면 변수 선언에 쏟는 노력을 좀 덜 순 있지만 디버깅에 열 배 더 많은 시간을 쏟아야 한다.
+변수를 추가하는 것은 악습이 아닌 좋은 습관!
+모던 자바스크립트 압축기(minifier)와 브라우저는 코드 최적화를 잘해준다. 변수를 추가한다고 해서 성능이슈가 생기지 않으며 값이 다른경우, 변수를
+다르게 선언해 주면 코드 최적화에도 도움이 됨!
+ 
