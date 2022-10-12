@@ -6,6 +6,7 @@ let message = 'Hello!'; // 변수를 정의하고 값을 할당합니다.
 alert(message); // Hello!
 
 한번에 여러 변수를 선언하는 것도 가능
+
 let user = 'John',
   age = 25,
   msg = 'Hello';
@@ -34,9 +35,6 @@ let err = "That"; // SyntaxError: 'message' has already been declared
 4. 대소문자를 구별한다. -> apple과 AppLE는 서로 다른 변수
 5. 예약어 목록에 있는 단어는 변수명으로 사용할 수 없다. 이 단어들은 자바스크립트 내부에서 이미 사용중이기 때문
 -> let, class, return, function 등등
-
-
-
 
 
 
