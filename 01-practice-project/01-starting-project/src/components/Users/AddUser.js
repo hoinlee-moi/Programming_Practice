@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import User from "./User";
 import Card from "../UI/Card";
 import Butoon from "../UI/Button";
 import classes from "./AddUser.module.css";
@@ -10,6 +11,9 @@ const AddUser = (props) => {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+
+    setEnteredAge('')
+    setEnteredUsername('')
   };
 
   const usernameChangeHandler = (event) => {
