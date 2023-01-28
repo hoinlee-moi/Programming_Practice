@@ -1,14 +1,9 @@
-import { useState } from "react";
-
-const UserLoginInput = ({ type, placeHolder, userInfo }) => {
-  const [inputValue, setInputValue] = useState("");
-
+const UserLoginInput = ({ value, type, placeHolder, userInfo }) => {
   const inputValueHandler = (e) => {
-    setInputValue(e.target.value);
-    userInfo(inputValue, e.target.placeholder);
+    userInfo(e.target.value, e.target.placeholder);
   };
 
-  return <input value={inputValue} type={type} placeholder={placeHolder} onChange={inputValueHandler} />;
+  return <input value={value} type={type} placeholder={placeHolder} onChange={inputValueHandler} />;
 };
 
 export default UserLoginInput;
