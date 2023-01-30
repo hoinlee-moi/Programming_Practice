@@ -67,6 +67,7 @@ function App() {
     //   id: dataId.current,
     // };
     // setData((data) => [newItem, ...data]);
+    // 함수를 이용한 state 관리 <- 매개변수로 받는 스냅샷을 통해 항상 최신 값으로 유지
   }, []);
 
   const onRemove = useCallback((targetId) => {
