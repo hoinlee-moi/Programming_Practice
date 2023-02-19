@@ -22,7 +22,7 @@ const Login =() => {
             <hr />
             <div className={styles.KakaoLoginBox}>
             <p>SNS 계정으로 로그인 하기</p>
-            <button onClick={kakaoLoginHandle}>카카오 로그인</button>
+            <button onClick={kakaoLoginHandle}><img src={process.env.PUBLIC_URL + `/assets/kakao_login_btn.png`} /></button>
             </div>
             </div>
         </div>
