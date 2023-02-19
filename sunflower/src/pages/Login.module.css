@@ -1,0 +1,57 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login h3 {
+font-size: 24px;
+font-weight: bold;
+
+margin:20px 0 20px 0
+}
+
+.login input {
+    width: 80%;
+    margin-bottom: 15px;
+}
+
+.loginContainer {
+    width: 50%;
+    height: 75%;
+}
+
+
+.loginSection {
+    width: 50%;
+    height: 100%;
+    padding: 40px 20px 30px 20px;
+}
+
+.loginSection h4 {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.loginBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.KakaoLoginBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.KakaoLoginBox p {
+    font-size: 12px;
+    margin: 10px 0 10px 0;
+}
+.KakaoLoginBox button {
+    width: 80%;
+    font-size: 15px;
+}
