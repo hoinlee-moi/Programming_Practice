@@ -1,0 +1,139 @@
+.login {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login h3 {
+  font-size: 24px;
+  font-weight: bold;
+
+  margin: 20px 0 20px 0;
+}
+
+.loginContainer {
+  width: 900px;
+  height: 650px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 2px;
+  box-shadow: 1px 1px 15px gray;
+  background-color: #ffffff;
+}
+@media (max-width:400) {
+  .loginContainer {
+    width: 90vw;
+  }
+}
+/* loginSection */
+.loginSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  height: 100%;
+  padding: 40px 20px 30px 20px;
+}
+
+.loginSection h4 {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.loginBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginBox input {
+  width: 80%;
+  height: 25px;
+
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 15px;
+
+  border: none;
+  background-color: #e2e2e2;
+
+}
+
+.loginBox button {
+  width: 150px;
+  height: 40px;
+
+  border-radius: 20px;
+  border: none;
+
+  background-color: #fae100;
+}
+
+/* KokaoLoginBox */
+
+.KakaoLoginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.KakaoLoginBox p {
+  font-size: 12px;
+  margin: 10px 0 10px 0;
+}
+.KakaoLoginBox button {
+  width: 80%;
+  padding: 0;
+  border: none;
+}
+.KakaoLoginBox img {
+  width: 100%;
+  cursor: pointer;
+}
+
+/* signUpSection */
+
+.signUpSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 50%;
+  height: 100%;
+  padding: 40px 20px 30px 20px;
+}
+
+.signUpSection h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.signUpSection input {
+  width: 80%;
+  height: 25px;
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 15px;
+
+  border: none;
+  background-color: #e2e2e2;
+}
+
+.signUpSection button {
+  width: 150px;
+  height: 40px;
+
+  border-radius: 20px;
+  border: none;
+
+  background-color: #fae100;
+}
+
