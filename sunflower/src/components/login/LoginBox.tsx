@@ -1,4 +1,5 @@
 import styles from "../../pages/Login.module.css"
+import MyInput from "../MyInput";
 
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAOLOGIN_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAOLOGIN_REDIRECT_URI}`;
 
@@ -12,8 +13,8 @@ const LoginBox = () => {
     <div className={styles.loginSection}>
       <div className={styles.loginBox}>
         <h4>로그인</h4>
-        <input type="text" placeholder="Email" />
-        <input type="text" placeholder="Password" />
+        <MyInput type="text" placeHolder="Email"/>
+        <MyInput type="password" placeHolder="Password"/>
         <button>로그인</button>
       </div>
       <hr />
