@@ -5,5 +5,5 @@ export type MyInputProps = {
 
 export type MyButtonProps = {
     onClick : ()=>void ;
-    children : React.PropsWithChildren
+    children : React.ReactNode | string
 }

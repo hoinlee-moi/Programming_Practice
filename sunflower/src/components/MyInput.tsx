@@ -1,10 +1,6 @@
 import { PropsWithChildren } from "react";
 import { JsxElement } from "typescript";
-
-type MyInputProps = {
-  type: string;
-  placeHolder: string;
-};
+import { MyInputProps } from "../etc/TypeColletion";
 
 const MyInput = ({ type, placeHolder }: MyInputProps) => {
   return <input type={type} placeholder={placeHolder} />;

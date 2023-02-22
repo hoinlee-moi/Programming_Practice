@@ -1,8 +1,8 @@
 
-import { MyButtonProps } from "../../TypeColletion"
+import { MyButtonProps } from "../../etc/TypeColletion"
 
 const MyButton = ({onClick,children}:MyButtonProps) => {
-    return <button></button>
+    return <button onClick={onClick}>{children}</button>
 }
 
 export default MyButton
