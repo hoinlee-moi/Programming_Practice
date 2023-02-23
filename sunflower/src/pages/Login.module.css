@@ -70,11 +70,14 @@
   background-color: #e2e2e2;
 }
 
-.loginBox span {
+.spanDisplay {
   margin-bottom: 10px;
 
   font-size: 15px;
   color: red;
+}
+.spanDisplayNone {
+  display: none;
 }
 
 .loginBox button {
@@ -133,6 +136,29 @@
   font-weight: bold;
 }
 
+.signUpEmailSection {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUpEmailCheck {
+  position: absolute;
+  right: 30px;
+  
+  width: 15%;
+  height: 70%;
+
+  margin-bottom: 15px;
+
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background-color: #ff8e81;
+}
+
 .signUpSection input {
   width: 80%;
   height: 25px;
@@ -144,7 +170,7 @@
   background-color: #e2e2e2;
 }
 
-.signUpSection button {
+.signUpBtn {
   width: 150px;
   height: 40px;
 
@@ -153,3 +179,4 @@
 
   background-color: #ff8e81;
 }
+
