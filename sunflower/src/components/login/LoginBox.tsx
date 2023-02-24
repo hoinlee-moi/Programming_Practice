@@ -2,36 +2,33 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { setCookie } from "../../etc/Cookie";
 import styles from "../../pages/Login.module.css";
-import MyInput from "../MyInput";
 import MyButton from "./MyButton";
+import useInput from "../../hooks/useInput";
 
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAOLOGIN_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAOLOGIN_REDIRECT_URI}`;
 
 const LoginBox = () => {
   const [loginFail, setLoginFail] = useState(false);
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [userData, setUserData] = useInput({
+    email: "",
+    password: "",
+  });
 
   useEffect(() => {
     setLoginFail(false);
-  }, [userEmail, userPassword]);
+  }, [userData]);
 
   const kakaoLoginHandle = () => {
     window.open(KAKAO_AUTH_URL, "카카오 로그인", "width = 400px, height=500px");
   };
 
   const loginHandle = () => {
-    if (userEmail.trim().length < 1 || userPassword.trim().length < 1) {
-      setLoginFail(true);
+    if(userData.email.length<1 || userData.password.length <1){
+      setLoginFail(true)
       return;
-      //아이디나 비번 아래 빨간색으로 유효성 검사가 되도록
     }
-    const user: { email: string; ps: string } = {
-      email: userEmail,
-      ps: userPassword,
-    };
     axios
-      .post("주소", user)
+      .post("주소", userData)
       .then((res) => {
         console.log(res.data.token);
         setCookie("login", `${res.data.token}`);
@@ -46,12 +43,8 @@ const LoginBox = () => {
     <div className={styles.loginSection}>
       <div className={styles.loginBox}>
         <h4>로그인</h4>
-        <MyInput type="text" placeHolder="Email" onChange={setUserEmail} />
-        <MyInput
-          type="password"
-          placeHolder="Password"
-          onChange={setUserPassword}
-        />
+        <input type="text" placeholder="Email" onChange={setUserData} name="email" />
+        <input type="password" placeholder="Password" onChange={setUserData} name="password" />
         <span
           className={loginFail ? styles.spanDisplay : styles.spanDisplayNone}
         >

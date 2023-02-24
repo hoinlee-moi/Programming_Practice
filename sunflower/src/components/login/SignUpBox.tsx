@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { JsxElement } from "typescript";
 import styles from "../../pages/Login.module.css";
-import MyInput from "../MyInput";
 
 const SignUpBox = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -27,12 +26,12 @@ const SignUpBox = () => {
     <div className={styles.signUpSection}>
       <h2>회원가입</h2>
       <div className={styles.signUpEmailSection}>
-      <MyInput type="text" placeHolder="Email" onChange={setUserEmail} />
+      <input type="text" placeholder="Email" onChange={(e)=>setUserEmail(e.target.value)} />
       <button className={styles.signUpEmailCheck}>중복검사</button>
       </div>
-      <MyInput type="password" placeHolder="Password" onChange={setUserPassword} />
-      <MyInput type="password" placeHolder="Re-enter password" onChange={setUserPasswordCheck} />
-      <MyInput type="text" placeHolder="Nickname" onChange={setUserNickname} />
+      <input type="password" placeholder="Password" onChange={(e)=>setUserPassword(e.target.value)} />
+      <input type="password" placeholder="Re-enter password" onChange={(e)=>setUserPasswordCheck(e.target.value)} />
+      <input type="text" placeholder="Nickname" onChange={(e)=>setUserNickname(e.target.value)} />
       <button className={styles.signUpBtn}>가입하기</button>
     </div>
   );
