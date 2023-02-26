@@ -11,10 +11,33 @@ const SignUpBox = () => {
     passwordCheck: "",
     nickname: "",
   });
-  const [dupCheckModal,setDupCheckModal] = useState(false)
+  const [signupMessage, setSignupMessage] = useState("");
+  const [dupCheckModal, setDupCheckModal] = useState(false);
   const [dupCheck, setDupCheck] = useState(false);
 
-  const signUpHandle = () => {};
+  //useEffect를 통해 
+
+  const signUpHandle = () => {
+    const psReg = new RegExp(
+      "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"
+    );
+    if (userData.password.trim().length < 1 || psReg.test(userData.password)) {
+      setSignupMessage("비밀번호 형식을 지켜주세요");
+      return;
+    }
+    if (userData.password !== userData.passwordCheck) {
+      setSignupMessage("비밀번호가 일치하지 않습니다");
+      return;
+    }
+    //중복검사 확인 
+    //닉네임 확인
+
+    axios.post("url",userData).then(res=>{
+      //가입완료
+    }).catch(err=>{
+      //가입실패
+    })
+  };
 
   const onBlurCheck = (element: HTMLElement, value: string) => {
     // if(value.trim().length < 1) {
@@ -23,16 +46,25 @@ const SignUpBox = () => {
   };
 
   const duplicateCheckHandle = () => {
-    if (userData.email.trim().length < 1) return;
+    const regEmail = new RegExp(
+      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
+    );
+    if (userData.email.trim().length < 1 || !regEmail.test(userData.email)) {
+      setSignupMessage("형식에 맞는 Email을 입력해주세요");
+      return;
+    }
 
-    axios.post("url",userData.email).then(res=>{
-      //중복 검사 완료 모달
-      setDupCheck(true)
-      setDupCheckModal(!dupCheckModal)
-    }).catch(err=>{
-      setDupCheck(false)
-      setDupCheckModal(!dupCheckModal)
-    })
+    axios
+      .post("url", userData.email)
+      .then((res) => {
+        //중복 검사 완료 모달
+        setDupCheck(true);
+        setDupCheckModal(!dupCheckModal);
+      })
+      .catch((err) => {
+        setDupCheck(false);
+        setDupCheckModal(!dupCheckModal);
+      });
   };
 
   return (
@@ -46,9 +78,19 @@ const SignUpBox = () => {
           name="email"
           autoComplete="off"
         />
-        <button className={styles.signUpEmailCheck} onClick={()=>setDupCheckModal(!dupCheckModal)}>중복검사</button>
+        <button
+          className={styles.signUpEmailCheck}
+          onClick={duplicateCheckHandle}
+        >
+          중복검사
+        </button>
       </div>
-      {dupCheckModal&&<AlertModal closeModal={()=>setDupCheckModal(!dupCheckModal)}>{dupCheck?"중복된 이메일 없습니다":"중복된 이메일이 있습니다"}</AlertModal>}
+      {signupMessage === "" ? <></> : <p>{signupMessage}</p>}
+      {dupCheckModal && (
+        <AlertModal closeModal={() => setDupCheckModal(!dupCheckModal)}>
+          {dupCheck ? "중복된 이메일 없습니다" : "중복된 이메일이 있습니다"}
+        </AlertModal>
+      )}
       <input
         type="password"
         placeholder="Password"
@@ -70,7 +112,9 @@ const SignUpBox = () => {
         name="nickname"
         autoComplete="off"
       />
-      <button className={styles.signUpBtn}>가입하기</button>
+      <button className={styles.signUpBtn} onClick={signUpHandle}>
+        가입하기
+      </button>
     </div>
   );
 };
