@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { setCookie } from "../../etc/Cookie";
 import styles from "../../pages/Login.module.css";
-import MyButton from "./MyButton";
+import MyButton from "../MyButton";
 import useInput from "../../hooks/useInput";
 
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAOLOGIN_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAOLOGIN_REDIRECT_URI}`;
@@ -23,10 +23,6 @@ const LoginBox = () => {
   };
 
   const loginHandle = () => {
-    if(userData.email.length<1 || userData.password.length <1){
-      setLoginFail(true)
-      return;
-    }
     axios
       .post("주소", userData)
       .then((res) => {
@@ -43,8 +39,20 @@ const LoginBox = () => {
     <div className={styles.loginSection}>
       <div className={styles.loginBox}>
         <h4>로그인</h4>
-        <input type="text" placeholder="Email" onChange={setUserData} name="email" />
-        <input type="password" placeholder="Password" onChange={setUserData} name="password" />
+        <input
+          type="text"
+          placeholder="Email"
+          onChange={setUserData}
+          name="email"
+          autoComplete="off"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={setUserData}
+          name="password"
+          autoComplete="off"
+        />
         <span
           className={loginFail ? styles.spanDisplay : styles.spanDisplayNone}
         >

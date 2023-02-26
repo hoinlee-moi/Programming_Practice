@@ -88,6 +88,7 @@
   border: none;
 
   background-color: #ff8e81;
+  cursor: pointer;
 }
 
 /* KokaoLoginBox */
@@ -108,6 +109,7 @@
   padding: 0;
 
   border: none;
+  cursor: pointer;
 }
 .KakaoLoginBox img {
   width: 100%;
@@ -157,6 +159,7 @@
   font-weight: 500;
   border: none;
   background-color: #ff8e81;
+  cursor: pointer;
 }
 
 .signUpSection input {
@@ -178,5 +181,6 @@
   border: none;
 
   background-color: #ff8e81;
+  cursor: pointer;
 }
 

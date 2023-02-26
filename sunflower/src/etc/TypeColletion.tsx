@@ -7,3 +7,7 @@ export type MyButtonProps = {
   children: React.ReactNode | string;
   className?: string;
 };
+export type AlertModalPorps = {
+  closeModal: () => void;
+  children: string;
+};
