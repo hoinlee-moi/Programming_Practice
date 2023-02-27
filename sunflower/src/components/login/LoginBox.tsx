@@ -71,4 +71,4 @@ const LoginBox = () => {
   );
 };
 
-export default LoginBox;
+export default React.memo(LoginBox);

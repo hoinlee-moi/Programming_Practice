@@ -138,6 +138,12 @@
   font-weight: bold;
 }
 
+.signUpSection span {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: red;
+}
+
 .signUpEmailSection {
   position: relative;
   width: 100%;

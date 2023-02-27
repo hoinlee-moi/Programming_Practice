@@ -1,8 +1,16 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, FocusEvent, useEffect } from "react";
 import useInput from "../../hooks/useInput";
 import styles from "../../pages/Login.module.css";
 import AlertModal from "../AlertModal";
+
+const reg = {
+  regPs: new RegExp(
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,14}$/
+  ),
+  regEmail: new RegExp(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/),
+  regNickname: new RegExp(/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣-_]{2,12}$/)
+};
 
 const SignUpBox = () => {
   const [userData, setUserData] = useInput({
@@ -13,44 +21,52 @@ const SignUpBox = () => {
   });
   const [signupMessage, setSignupMessage] = useState("");
   const [dupCheckModal, setDupCheckModal] = useState(false);
+  const [dupCheckModalMs,setDupCheckModalMs] = useState("")
   const [dupCheck, setDupCheck] = useState(false);
 
-  //useEffect를 통해 
-
+  //useEffect를 통해
+  useEffect(()=>{
+    setSignupMessage("")
+  },[userData])
   const signUpHandle = () => {
-    const psReg = new RegExp(
-      "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/"
-    );
-    if (userData.password.trim().length < 1 || psReg.test(userData.password)) {
-      setSignupMessage("비밀번호 형식을 지켜주세요");
+    if(!dupCheck) {
+      setSignupMessage("Email중복검사를 완료해주세요")
       return;
     }
-    if (userData.password !== userData.passwordCheck) {
-      setSignupMessage("비밀번호가 일치하지 않습니다");
+    if(!reg.regPs.test(userData.password)){
+      setSignupMessage("비밀번호는 8~14자이내 영어 대소문자,숫자,특수기호를 최소 1개이상 포함하여야 합니다.")
       return;
     }
-    //중복검사 확인 
-    //닉네임 확인
+    if(userData.password!==userData.passwordCheck){
+      setSignupMessage("비밀번호 재입력이 올바르지 않습니다")
+      return;
+    }
+    if(!reg.regNickname.test(userData.nickname)){
+      setSignupMessage("닉네임은 2~12자이내 한글,영문,_,-를 포함하여 만들수 있습니다")
+      return;
+    }
 
-    axios.post("url",userData).then(res=>{
-      //가입완료
-    }).catch(err=>{
-      //가입실패
-    })
+
+    axios
+      .post("url", userData)
+      .then((res) => {
+        //가입완료
+      })
+      .catch((err) => {
+        //가입실패
+      });
   };
 
-  const onBlurCheck = (element: HTMLElement, value: string) => {
-    // if(value.trim().length < 1) {
-    //     element.onfocus
-    // }
+  const onBlurCheck = (e: FocusEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    
   };
 
   const duplicateCheckHandle = () => {
-    const regEmail = new RegExp(
-      "([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(.[!#-'*+/-9=?A-Z^-~-]+)*|[[\t -Z^-~]*])"
-    );
-    if (userData.email.trim().length < 1 || !regEmail.test(userData.email)) {
-      setSignupMessage("형식에 맞는 Email을 입력해주세요");
+    if(!reg.regEmail.test(userData.email)){
+      setDupCheckModalMs("형식에 맞는 Email을 입력해주세요")
+      setDupCheckModal(!dupCheckModal)
       return;
     }
 
@@ -58,11 +74,13 @@ const SignUpBox = () => {
       .post("url", userData.email)
       .then((res) => {
         //중복 검사 완료 모달
+        setDupCheckModalMs("사용가능한 Email입니다")
         setDupCheck(true);
         setDupCheckModal(!dupCheckModal);
       })
       .catch((err) => {
-        setDupCheck(false);
+        setDupCheckModalMs("이미 사용중인 Email입니다")
+        setDupCheck(true);
         setDupCheckModal(!dupCheckModal);
       });
   };
@@ -77,6 +95,7 @@ const SignUpBox = () => {
           onChange={setUserData}
           name="email"
           autoComplete="off"
+          onBlur={onBlurCheck}
         />
         <button
           className={styles.signUpEmailCheck}
@@ -85,19 +104,22 @@ const SignUpBox = () => {
           중복검사
         </button>
       </div>
-      {signupMessage === "" ? <></> : <p>{signupMessage}</p>}
+
       {dupCheckModal && (
         <AlertModal closeModal={() => setDupCheckModal(!dupCheckModal)}>
-          {dupCheck ? "중복된 이메일 없습니다" : "중복된 이메일이 있습니다"}
+          {dupCheckModalMs}
         </AlertModal>
       )}
+
       <input
         type="password"
         placeholder="Password"
         onChange={setUserData}
         name="password"
         autoComplete="off"
+        onBlur={onBlurCheck}
       />
+
       <input
         type="password"
         placeholder="Re-enter password"
@@ -112,6 +134,7 @@ const SignUpBox = () => {
         name="nickname"
         autoComplete="off"
       />
+      {signupMessage === "" ? <></> : <span>{signupMessage}</span>}
       <button className={styles.signUpBtn} onClick={signUpHandle}>
         가입하기
       </button>
