@@ -1,10 +1,6 @@
 import { atom } from "recoil"
-import { UserToken } from "../../etc/TypeColletion"
 
-export const userToken = atom<UserToken[]>({
-    key: "Token",
-    default:[{
-        AccessToken:"",
-        RefreshToken:""
-    }]
+export const FloatingMenuWidth = atom<number | undefined>({
+    key : "FloatingMenuWidth",
+    default : 0
 })

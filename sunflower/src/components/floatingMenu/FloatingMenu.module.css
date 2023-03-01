@@ -1,0 +1,32 @@
+.menuContainer {
+  width: 200px;
+  height: 100vh;
+  padding: 8px 12px 20px 12px;
+
+  position: fixed;
+  left: 0;
+
+  background-color: aqua;
+}
+
+.logoBox {
+  width: 170px;
+  height: 80px;
+
+  background-color: aliceblue;
+}
+
+.allMenuBox {
+  width: 170px;
+}
+.homeBox, .searchBox, .makeBox, .profileBox {
+  width: 170px;
+  height: 45px;
+  padding: 12px;
+  margin-top: 4px;
+}
+.home, .search, .make, .profile {
+    display: block;
+    padding-top: 10px;
+    padding-left: 10px;
+}
