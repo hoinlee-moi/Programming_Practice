@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+
+import useInput from "../../hooks/useInput";
 import { setCookie } from "../../etc/Cookie";
+import { userToken } from "../Recoil/RecoilState";
+
+import axios from "axios";
+
 import styles from "../../pages/Login.module.css";
 import MyButton from "../MyButton";
-import useInput from "../../hooks/useInput";
+import { UserToken } from "../../etc/TypeColletion";
 
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAOLOGIN_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAOLOGIN_REDIRECT_URI}`;
 
 const LoginBox = () => {
+  const navigate = useNavigate();
+  // const [token,SetUserToken] = useRecoilState<UserToken[]>(userToken)
   const [loginFail, setLoginFail] = useState(false);
   const [userData, setUserData] = useInput({
     email: "",
@@ -23,13 +32,23 @@ const LoginBox = () => {
   };
 
   const loginHandle = () => {
+    const userLogin = {
+      emailId: userData.email,
+      password: userData.password,
+    };
     axios
-      .post("주소", userData)
+      .post("http://3.36.57.184/api/auth/login", userLogin)
       .then((res) => {
-        console.log(res.data.token);
+        console.log(
+          res.data.accessToken,
+          "리프레시 토큰 \n",
+          res.data.refreshToken
+        );
         setCookie("login", `${res.data.token}`);
+        navigate("/main", { replace: true });
       })
       .catch((err) => {
+        console.log(err);
         // 아래 빨간색 글씨 나오도록 (비번이나 아이디가 틀리다)
         setLoginFail(true);
       });
