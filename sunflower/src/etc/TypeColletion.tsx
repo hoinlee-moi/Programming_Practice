@@ -12,8 +12,23 @@ export type AlertModalPorps = {
   closeModal: () => void;
   children: string;
 };
+export type MakeModalProps = {
+  closeModal: () => void;
+  anime: boolean;
+};
+export type PostItemBoxProps = {
+  itemList: {
+    postId: string;
+    postImageUrls: string;
+    postLikeCounts: string;
+    commentCounts: string;
+    mealCount: string;
+    nuKcal: string;
+  }[];
+};
+
 //Recoil 타입
-export type UserToken = { 
-  AccessToken : "",
-  RefreshToken: ""
-} 
+export type UserToken = {
+  AccessToken: "";
+  RefreshToken: "";
+};
