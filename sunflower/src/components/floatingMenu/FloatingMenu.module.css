@@ -21,19 +21,25 @@
 .allMenuBox {
   width: 170px;
 }
-.homeBox, .searchBox, .makeBox, .profileBox {
+.homeBox,
+.searchBox,
+.makeBox,
+.profileBox {
   width: 170px;
   height: 45px;
   padding: 12px;
   margin-top: 4px;
 }
-.home, .search, .make, .profile {
-    display: block;
-    padding-top: 10px;
-    padding-left: 10px;
+.home,
+.search,
+.make,
+.profile {
+  display: block;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
-/* MakeModal */
+/* MakeModal-modal animation */
 .modal {
   width: 100%;
   height: 100vh;
@@ -41,7 +47,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1000;
+  z-index: -10;
 
   display: flex;
   justify-content: center;
@@ -55,8 +61,6 @@
   min-height: 390px;
   min-width: 350px;
 
-  padding: 20px;
-
   box-sizing: border-box;
   border-radius: 14px;
   background-color: #fff;
@@ -66,10 +70,34 @@
 }
 .onModal {
   display: flex;
-  z-index: 1000;
+  z-index: 10;
 }
 .onContent {
   transform: translateY(0);
   opacity: 1;
   transition: all 0.3s;
+}
+
+/* MakeModal */
+.modalContentBox {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.modalTitle {
+  width: 100%;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #d3d3d3;
+}
+
+.imageUploadBox {
+  width: 100%;
+  height: 90%;
 }
