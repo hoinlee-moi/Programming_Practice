@@ -11,6 +11,7 @@ export type MyButtonProps = {
 export type AlertModalPorps = {
   closeModal: () => void;
   children: string;
+  buttonFunc? : (e:React.MouseEvent<HTMLButtonElement>)=>void
 };
 export type MakeModalProps = {
   closeModal: () => void;

@@ -30,7 +30,7 @@
     font-weight: bold;
   }
    
-  .modalCloseBtn {
+  .modalCloseBtn, .modalCloseCheckBtn {
     width: 75px;
     margin-top: 20px;
     border: none;
@@ -39,6 +39,9 @@
     font-size: 20px;
   }
    
-  .modalCloseBtn:hover {
+  .modalCloseBtn,.modalCloseCheckBtn:hover {
     cursor: pointer;
+  }
+  .modalCloseCheckBtn {
+    margin-right: 10px;
   }

@@ -7,8 +7,8 @@ import MakeModalUpload from "./MakeModalUpload";
 
 const MakeModalContent = () => {
   const uploadedImages = useRecoilValue(UploadFiles)
-  return  (<div>
-    <MakeModalUpload />;
+  return  (<div className={styles.contentBox}>
+    <MakeModalUpload />
   </div>)
 };
 
