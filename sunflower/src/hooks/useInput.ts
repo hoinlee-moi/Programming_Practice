@@ -1,5 +1,5 @@
 import { UserInputProps } from "./../etc/TypeColletion";
-import React, { useState, useCallback, ChangeEvent } from "react";
+import React, { useState, useCallback } from "react";
 
 export default (initalValue:any): UserInputProps => {
   const [data, setData] = useState(initalValue);

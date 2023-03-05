@@ -26,6 +26,10 @@ export type PostItemBoxProps = {
     nuKcal: string;
   }[];
 };
+export type MakeModalUploadProps = {
+  setUploadedImages : (files:FileList|undefined)=>[string[],()=>void];
+  uploadedImages : string[]
+}
 
 //Recoil 타입
 export type UserToken = {

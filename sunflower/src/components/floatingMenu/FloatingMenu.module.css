@@ -1,4 +1,4 @@
-/* mewnuBar */
+/* menuBar */
 .menuContainer {
   width: 200px;
   height: 100vh;
@@ -57,10 +57,10 @@
 }
 .content {
   height: 60vh;
-  width: 60vw;
-  min-height: 390px;
+  width: 50vw;
+  min-height: 350px;
   min-width: 350px;
-  max-width: 600px;
+  max-width: 450px;
 
   box-sizing: border-box;
   border-radius: 14px;
@@ -101,10 +101,13 @@
 .imageUploadBox {
   width: 100%;
   height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .dragUploadBox {
   width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -174,3 +177,29 @@
     opacity: 1;
   }
 }
+
+/* MakeModalWrite */
+
+.modalWrite {
+  width: 80vw;
+  min-height: 400px;
+  min-width: 700px;
+  animation: widthAni 2s;
+}
+@keyframes widthAni {
+  from {
+    width: 60vw;
+  }to {
+    width: 80vw;
+  }
+}
+
+.imagePreviewBox{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
