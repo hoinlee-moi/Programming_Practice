@@ -41,7 +41,7 @@ const LoginBox = () => {
       .then((res) => {
         console.log(
           res.data.accessToken,
-          "리프레시 토큰 \n",
+          "리프레시 토큰",
           res.data.refreshToken
         );
         setCookie("login", `${res.data.token}`);

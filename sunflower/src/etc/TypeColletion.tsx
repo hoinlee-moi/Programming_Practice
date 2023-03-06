@@ -32,6 +32,10 @@ export type MakeModalUploadProps = {
   uploadedImages : string[]
 }
 
+export type MyCanvasProps = {
+  imageSrc : string;
+}
+
 //Recoil 타입
 export type UserToken = {
   AccessToken: "";

@@ -3,6 +3,7 @@ import styles from "./AlertModal.module.css";
 
 const AlertModal = ({ closeModal, children, buttonFunc }: AlertModalPorps) => {
   return (
+    <div className={styles.modalBack}>
     <div className={styles.Modal} onClick={closeModal}>
       <div className={styles.modalBody} onClick={(e) => e.stopPropagation()}>
         <p>{children}</p>
@@ -17,6 +18,7 @@ const AlertModal = ({ closeModal, children, buttonFunc }: AlertModalPorps) => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
