@@ -3,6 +3,7 @@ import { MakeModalUploadProps } from "../../etc/TypeColletion";
 import usefileUpload from "../../hooks/usefileUpload";
 import styles from "./FloatingMenu.module.css";
 import MakeModalPreview from "./MakeModalPreview";
+import MakeModalWrite from "./MakeModalWrite";
 
 const MakeModalUpload = () => {
   const [uploadedImages, setUploadedImages] = usefileUpload({
@@ -68,7 +69,7 @@ const MakeModalUpload = () => {
       }
     >
       {uploadedImages.length > 0 ? (
-        <MakeModalPreview />
+        <MakeModalPreview />      
       ) : (
         <label htmlFor="" className={styles.dragUploadBox} ref={uploadBoxRef}>
           <div className={styles.iconBox}>

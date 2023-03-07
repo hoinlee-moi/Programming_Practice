@@ -5,7 +5,7 @@ import { UploadFiles } from "./Recoil/RecoilState";
 
 const MyCanvas = ({imageSrc}:MyCanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    console.log(imageSrc,canvasRef)
+    // console.log(imageSrc,canvasRef)
     useEffect(() => {
         if (!canvasRef) return;
         const ctx = canvasRef.current?.getContext("2d");

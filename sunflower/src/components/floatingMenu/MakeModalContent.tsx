@@ -4,11 +4,13 @@ import { UploadFiles } from "../Recoil/RecoilState";
 
 import styles from "./FloatingMenu.module.css";
 import MakeModalUpload from "./MakeModalUpload";
+import MakeModalWrite from "./MakeModalWrite";
 
 const MakeModalContent = () => {
   const uploadedImages = useRecoilValue(UploadFiles)
-  return  (<div className={styles.contentBox}>
+  return  (<div className={styles.contentContainer}>
     <MakeModalUpload />
+    {uploadedImages.length>0&&<MakeModalWrite />}
   </div>)
 };
 

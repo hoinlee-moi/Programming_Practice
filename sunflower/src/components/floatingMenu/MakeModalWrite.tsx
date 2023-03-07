@@ -1,16 +1,43 @@
-import styles from "./FloatingMenu.module.css";
-const MakeModalWrite = () => {
-    return (<div className={styles.wirteBox}>
-        {/* 플랙스 아래정렬으로 */}
-        <div className={styles.nickNameBox}>
-            {/* 플랙스 넣기 */}
-            <img src="" className={styles.profileImg} />
-            <p className={styles.userNickname}></p>
-        </div>
-        <div>
-            <textarea name="" id="" cols={30} rows={10} maxLength={255} autoComplete="off"></textarea>
-        </div>
-    </div>)
-}
+import React, { useState } from "react";
 
-export default MakeModalWrite
+import styles from "./FloatingMenu.module.css";
+
+const MakeModalWrite = () => {
+  const [content, setContent] = useState("");
+
+  return (
+    <div className={styles.writeContainer}>
+      <div className={styles.writeBox}>
+        <div className={styles.nickNameBox}>
+          {/* 플랙스 넣기 */}
+          <div className={styles.profileImgBox}>
+            <img
+              src={process.env.PUBLIC_URL + `/assets/basic_profile.jpg`}
+            //   유저 프로필 있으면 사진이 들어가도록 변경
+              className={styles.profileImg}
+            />
+          </div>
+          <p className={styles.userNickname}>닉네임</p>
+        </div>
+        <div className={styles.contentBox}>
+          <textarea
+            name=""
+            id=""
+            cols={30}
+            rows={8}
+            maxLength={255}
+            autoComplete="off"
+            placeholder="내용 입력..."
+            onChange={(e)=>setContent(e.target.value)}
+          ></textarea>
+          <p className={styles.textLength}>{`${content.length}/255`}</p>
+        </div>
+        <div className={styles.searchCalBox}>
+          <input type="text" />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default MakeModalWrite;
