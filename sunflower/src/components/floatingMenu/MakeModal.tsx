@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { MakeModalProps } from "../../etc/TypeColletion";
+
 import AlertModal from "../AlertModal";
 import { UploadFiles } from "../Recoil/RecoilState";
 import styles from "./FloatingMenu.module.css";
 import MakeModalContent from "./MakeModalContent";
 
-const MakeModal = ({ closeModal, anime }: MakeModalProps) => {
+const MakeModal = ({ closeModal }: MakeModalProps) => {
   const [uploadedImages, setUploadedImages] = useRecoilState(UploadFiles);
   const [modalAlert, setModalAlert] = useState(false);
+
   const closeCheckRepeat = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       const target = (e.target as HTMLDivElement).textContent;
@@ -29,13 +31,27 @@ const MakeModal = ({ closeModal, anime }: MakeModalProps) => {
     }
     closeModal();
   };
+  useEffect(() => {
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${window.scrollY}px;
+      overflow-y: scroll;
+      width: 100%;`;
+    return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.cssText = `
+        background-color: #f6f6f6;
+        min-height: 100vh;
+        margin: 0;
+        line-height: 1;`;
+      window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
+    };
+  }, []);
+
   return (
-    <section
-      className={`${styles.modal} ${anime && styles.onModal}`}
-      onMouseDown={closeCheckHandle}
-    >
+    <section className={styles.modal} onMouseDown={closeCheckHandle}>
       <div
-        className={`${styles.content} ${anime && styles.onContent} ${
+        className={`${styles.content} ${
           uploadedImages.length > 0 && styles.modalWrite
         }`}
         onMouseDown={(e) => e.stopPropagation()}
@@ -58,4 +74,4 @@ const MakeModal = ({ closeModal, anime }: MakeModalProps) => {
     </section>
   );
 };
-export default React.memo(MakeModal);
+export default MakeModal;

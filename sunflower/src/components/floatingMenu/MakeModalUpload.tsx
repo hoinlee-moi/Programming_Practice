@@ -69,7 +69,7 @@ const MakeModalUpload = () => {
       }
     >
       {uploadedImages.length > 0 ? (
-        <MakeModalPreview />      
+        <MakeModalPreview />
       ) : (
         <label htmlFor="" className={styles.dragUploadBox} ref={uploadBoxRef}>
           <div className={styles.iconBox}>
@@ -88,6 +88,7 @@ const MakeModalUpload = () => {
         컴퓨터에서 선택
       </label>
       <input
+        className={styles.uploadInput}
         type="file"
         id="fileUpload"
         multiple

@@ -7,6 +7,7 @@ import styles from "./FloatingMenu.module.css";
 import MyButton from "../MyButton";
 import MakeModal from "./MakeModal";
 
+
 const FloatingMenu = () => {
   const navigate = useNavigate();
   const containeRef = useRef<HTMLDivElement>(null);
@@ -19,15 +20,13 @@ const FloatingMenu = () => {
     setWidth(containeRef.current?.clientWidth);
   }, []);
 
+
   //검색 만들기
   //만들기 버튼 누를 시 모달창 띄우기
 
   return (
     <>
-      <MakeModal
-        closeModal={() => setMakeModal(!makeModal)}
-        anime={makeModal}
-      />
+      {makeModal && <MakeModal closeModal={() => setMakeModal(!makeModal)} />}
       <div className={styles.menuContainer} ref={containeRef}>
         <div className={styles.searchContainer}></div>
         <div className={styles.logoBox}>해바라기 로고</div>

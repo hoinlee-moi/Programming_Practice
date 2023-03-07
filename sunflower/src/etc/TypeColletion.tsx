@@ -15,7 +15,6 @@ export type AlertModalPorps = {
 };
 export type MakeModalProps = {
   closeModal: () => void;
-  anime: boolean;
 };
 export type PostItemBoxProps = {
   itemList: {

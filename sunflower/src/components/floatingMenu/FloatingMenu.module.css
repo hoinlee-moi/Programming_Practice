@@ -7,6 +7,7 @@
   position: fixed;
   z-index: 1;
   left: 0;
+  top: 0;
 
   background-color: aqua;
 }
@@ -47,7 +48,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -10;
+  z-index: 10;
 
   display: flex;
   justify-content: center;
@@ -65,20 +66,16 @@
   border-radius: 14px;
   background-color: #fff;
   box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
-  transform: translateY(20%);
-  opacity: 0;
-}
-.onModal {
-  display: flex;
-  z-index: 10;
-}
-.onContent {
-  transform: translateY(0);
+  animation: onModal 0.15s;
   opacity: 1;
-  transition: all 0.3s;
 }
-
-/* MakeModal */
+@keyframes onModal {
+  from {
+    transform: scale(1.3,1.3);
+  }to{
+    transform: scale(1.0,1.0);
+  }
+}
 
 .contentContainer {
   width: 100%;
@@ -148,7 +145,7 @@
   cursor: pointer;
 }
 
-.modalContentBox input {
+.uploadInput  {
   display: none;
 }
 
@@ -257,16 +254,32 @@
 .contentBox textarea {
   width: 100%;
   height: 100%;
+  padding-right: 10px;
   box-sizing: border-box;
   border: none;
   resize: none;
 }
 .searchCalBox {
   width: 100%;
+  height: 40px;
+  padding: 0 5px 3px 5px;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  border-bottom: 2px solid #d3d3d3;
 }
 .searchCalBox input {
-  width: 200px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
+  margin: 3px 3px;
+  border:none;
+  box-sizing: border-box;
+}
+.searchCalBox button {
+  position: absolute;
+  height: 100%;
+  right: 0;
+  font-size: 12px;
 }
 .textLength {
   text-align: right;
@@ -274,3 +287,4 @@
   font-size: 14px;
   color: rgba(0, 0, 0, 0.6);
 }
+

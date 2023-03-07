@@ -32,10 +32,11 @@ const MakeModalWrite = () => {
           ></textarea>
           <p className={styles.textLength}>{`${content.length}/255`}</p>
         </div>
-        <div className={styles.searchCalBox}>
-          <input type="text" />
-        </div>
       </div>
+        <div className={styles.searchCalBox}>
+          <input type="text" placeholder="칼로리 검색해보기" />
+          <button>검색</button>
+        </div>
     </div>
   );
 };
