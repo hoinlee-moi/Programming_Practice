@@ -1,36 +1,26 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useResetRecoilState } from "recoil";
 import { MakeModalProps } from "../../etc/TypeColletion";
 
 import AlertModal from "../AlertModal";
-import { UploadFiles } from "../Recoil/RecoilState";
+import MyButton from "../MyButton";
+import {
+  UploadFiles,
+  CreatePost,
+  CreateContentsData,
+  CreateMenuData,
+} from "../Recoil/RecoilState";
 import styles from "./FloatingMenu.module.css";
 import MakeModalContent from "./MakeModalContent";
 
 const MakeModal = ({ closeModal }: MakeModalProps) => {
-  const [uploadedImages, setUploadedImages] = useRecoilState(UploadFiles);
+  const postContent = useRecoilValue(CreateContentsData);
+  const postMenu = useRecoilValue(CreateMenuData);
+  const createPost = useRecoilValue(CreatePost);
+  const uploadedImages = useRecoilValue(UploadFiles);
+  const uploadedImagesReset = useResetRecoilState(UploadFiles);
   const [modalAlert, setModalAlert] = useState(false);
 
-  const closeCheckRepeat = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      const target = (e.target as HTMLDivElement).textContent;
-      if (target !== "확인") {
-        setModalAlert(true);
-        return;
-      }
-      setModalAlert(false);
-      closeModal();
-      setUploadedImages([]);
-    },
-    [modalAlert, uploadedImages]
-  );
-  const closeCheckHandle = () => {
-    if (uploadedImages.length > 0) {
-      setModalAlert(true);
-      return;
-    }
-    closeModal();
-  };
   useEffect(() => {
     document.body.style.cssText = `
       position: fixed; 
@@ -48,6 +38,42 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
     };
   }, []);
 
+  const closeCheckRepeat = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const target = (e.target as HTMLDivElement).textContent;
+      if (target !== "확인") {
+        setModalAlert(true);
+        return;
+      }
+      setModalAlert(false);
+      closeModal();
+      uploadedImagesReset();
+    },
+    [modalAlert, uploadedImages]
+  );
+
+  const closeCheckHandle = () => {
+    if (uploadedImages.length > 0) {
+      setModalAlert(true);
+      return;
+    }
+    closeModal();
+  };
+
+  const createPostHandle = () => {
+    if (postContent.trim().length < 1 || postMenu.menuList.length < 1) {
+      alert("없음!");
+      return;
+    }
+    const newPostData = {
+      postContents : postContent,
+      postImageUrls : uploadedImages,
+      mealCount:1,
+      ...postMenu,
+    };
+    createPost(newPostData)
+  };
+
   return (
     <section className={styles.modal} onMouseDown={closeCheckHandle}>
       <div
@@ -57,6 +83,14 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className={styles.modalContentBox}>
+          {uploadedImages.length > 0 && (
+            <MyButton
+              onClick={createPostHandle}
+              className={styles.createPostBtn}
+            >
+              작성
+            </MyButton>
+          )}
           <div className={styles.modalTitle}>
             <p>새 게시물 만들기</p>
           </div>

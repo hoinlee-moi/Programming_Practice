@@ -7,11 +7,12 @@ export type MyButtonProps = {
   onClick: () => void;
   children: React.ReactNode | string;
   className?: string;
+  id?: string;
 };
 export type AlertModalPorps = {
   closeModal: () => void;
   children: string;
-  buttonFunc? : (e:React.MouseEvent<HTMLButtonElement>)=>void
+  buttonFunc?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 export type MakeModalProps = {
   closeModal: () => void;
@@ -27,16 +28,43 @@ export type PostItemBoxProps = {
   }[];
 };
 export type MakeModalUploadProps = {
-  setUploadedImages : (files:FileList|undefined)=>[string[],()=>void];
-  uploadedImages : string[]
-}
+  setUploadedImages: (files: FileList | undefined) => [string[], () => void];
+  uploadedImages: string[];
+};
 
 export type MyCanvasProps = {
-  imageSrc : string;
-}
+  imageSrc: string;
+};
 
 //Recoil 타입
 export type UserToken = {
-  AccessToken: "";
-  RefreshToken: "";
+  AccessToken: string;
+  RefreshToken: string;
+};
+export type CreatPostType = {
+  postContents: string;
+  postImageUrls: string[];
+  menuList: string[];
+  nuCarbs: number;
+  nuProtein: number;
+  nuFat: number;
+  nuKcal: number;
+};
+
+export type CreatMenuType = {
+  menuList: string[];
+  nuCarbs: number;
+  nuProtein: number;
+  nuFat: number;
+  nuKcal: number;
+};
+
+
+//CreatePost type
+export type Foodnutrient = {
+  foodName: string;
+  nuCarbs: number;
+  nuProtein: number;
+  nuFat: number;
+  nuKcal: number;
 };

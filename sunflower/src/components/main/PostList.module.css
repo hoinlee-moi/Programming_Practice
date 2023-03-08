@@ -1,7 +1,7 @@
 /* PostList */
 .postListContianer {
     height: auto;
-    background-color: green;
+    background-color: white;
 }
 
 
@@ -27,7 +27,7 @@
 
 
 .postItemBoxRight {
-    background-color: black;
+    background-color: #e2e2e2;
     
 }
 /* .postItemBoxLong {

@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { MakeModalUploadProps } from "../../etc/TypeColletion";
+import useAlert from "../../hooks/useAlert";
 import usefileUpload from "../../hooks/usefileUpload";
 import styles from "./FloatingMenu.module.css";
 import MakeModalPreview from "./MakeModalPreview";
@@ -10,15 +11,10 @@ const MakeModalUpload = () => {
     list: [],
     max: 5,
   });
-  const [uploadAlert, setUploadAlert] = useState(false);
+  const [uploadAlert, setUploadAlert] = useAlert(false);
   const uploadBoxRef = useRef<HTMLLabelElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const alertTimeout = () => {
-    setUploadAlert(true);
-    setTimeout(() => {
-      setUploadAlert(false);
-    }, 5000);
-  };
+
   useEffect(() => {
     const uploadBox = uploadBoxRef.current;
     const input = inputRef.current;
@@ -26,7 +22,7 @@ const MakeModalUpload = () => {
     const changeHandler = (e: any) => {
       const files = e.target.files;
       if (files.length > 5 || uploadedImages.length > 4) {
-        alertTimeout();
+        setUploadAlert();
         return;
       }
       setUploadedImages(files);
@@ -38,7 +34,7 @@ const MakeModalUpload = () => {
       if (e.dataTransfer !== null) {
         const files = e.dataTransfer.files;
         if (files.length > 5 || uploadedImages.length > 4) {
-          alertTimeout();
+          setUploadAlert();
           return;
         }
         setUploadedImages(files);
@@ -84,8 +80,19 @@ const MakeModalUpload = () => {
           </div>
         </label>
       )}
-      <label htmlFor="fileUpload" className={styles.fileUploadlabel}>
-        컴퓨터에서 선택
+      <label
+        htmlFor="fileUpload"
+        className={
+          uploadedImages.length < 1
+            ? styles.fileUploadLabel
+            : styles.uploadLabelChange
+        }
+      >
+        {uploadedImages.length < 1 ? (
+          "컴퓨터에서 선택"
+        ) : (
+          <img src={process.env.PUBLIC_URL + `/assets/fileUploadIcon.png`} />
+        )}
       </label>
       <input
         className={styles.uploadInput}
