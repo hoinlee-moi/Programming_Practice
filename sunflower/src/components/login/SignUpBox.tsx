@@ -57,7 +57,7 @@ const SignUpBox = () => {
     };
 
     axios
-      .post("http://3.36.57.184/api/auth/signup", signData)
+      .post("http://15.165.19.237:8080/api/auth/signup", signData)
       .then((res) => {
         console.log(res);
         //가입완료
@@ -81,14 +81,16 @@ const SignUpBox = () => {
     }
 
     axios
-      .post("url", userData.email)
+      .get(`http://15.165.19.237:8080/api/auth/emailIds/${userData.email}/exists`)
       .then((res) => {
         //중복 검사 완료 모달
+        console.log(res)
         setDupCheckModalMs("사용가능한 Email입니다");
         setDupCheck(true);
         setDupCheckModal(!dupCheckModal);
       })
       .catch((err) => {
+        console.log(err)
         setDupCheckModalMs("이미 사용중인 Email입니다");
         setDupCheck(true);
         setDupCheckModal(!dupCheckModal);

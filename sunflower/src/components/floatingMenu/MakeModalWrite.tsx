@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
+import { getCookie } from "../../etc/Cookie";
 import { Foodnutrient } from "../../etc/TypeColletion";
 import useAlert from "../../hooks/useAlert";
 import MyButton from "../MyButton";
@@ -17,44 +18,53 @@ const MakeModalWrite = () => {
   const [alertMs, setAlertMs] = useState("");
 
   const foodCalSearch = async () => {
-    if (foodList.length >= 15) {
-      setAlertMs("음식은 최대 15개까지 가능합니다.");
-      await setSearchAlert();
+    if (foodName.trim().length < 1||!foodName) {
+      setAlertMs("음식 이름을 입력해주세요");
+      setSearchAlert();
+      return;
     }
-    setFoodList((snap: any) => [...snap, foodName]);
-    setFoodName("");
+    if (foodList.length >= 15) {
+      setAlertMs("음식은 최대 15개까지 가능합니다");
+      setSearchAlert();
+      return;
+    }
     await axios
-      .get(`http://3.36.57.184/api/posts/search?keyword=${foodName}`)
+      .get(
+        `http://15.165.19.237:8080/posts/search-nutrition?keyword=${foodName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getCookie("accessToken")}`,
+          },
+        }
+      )
       .then((res) => {
         console.log(res);
-        // foodName : String,
-        // nuCarbs : Double,
-        // nuProtein : Double,
-        // nuFat : Double,
-        // nuKcal : Double
-        setFoodList((snap: any) => [...snap, res]);
-        foodCalSub();
+        setFoodList((snap: any) => [...snap, res.data]);
+        foodCalSub(res.data);
       })
       .catch((err) => {
         console.log("푸드칼로리에러", err);
         setAlertMs("찾으시는 음식 정보가 없습니다");
         setSearchAlert();
       });
+    setFoodName("");
   };
 
   const enterKeyEvent = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") foodCalSearch();
   };
 
-  const foodCalSub = () => {
-    const food = foodList[foodList.length - 1];
+  const foodCalSub = async (data:Foodnutrient) => {
+    let food:Foodnutrient;
+    if(foodList.lenght>0) food = foodList[foodList.length - 1]
+    else food = data
     setFoodSubMenu((snap) => {
       return {
-        menuList: [...snap.menuList,food.foodName],
-        nuCarbs: snap.nuCarbs+food.nuCarbs,
-        nuProtein: snap.nuProtein+food.nuProtein,
-        nuFat: snap.nuFat+food.nuFat,
-        nuKcal: snap.nuKcal+food.nuKcal,
+        menuList: [...snap.menuList, food.foodName],
+        nuCarbs: snap.nuCarbs + parseInt(food.nuCarbs),
+        nuProtein: snap.nuProtein + parseInt(food.nuProtein),
+        nuFat: snap.nuFat + parseInt(food.nuFat),
+        nuKcal: snap.nuKcal + parseInt(food.nuKcal),
       };
     });
   };
@@ -100,7 +110,13 @@ const MakeModalWrite = () => {
           추가
         </MyButton>
       </div>
-      <div></div>
+      <div>
+        <ol>
+          {foodList.map((item:any)=>{
+            return <li>{item.foodName}</li>
+          })}
+        </ol>
+      </div>
       <div
         className={`${styles.uploadAlert} ${
           searchAlert && styles.uploadAlertOff

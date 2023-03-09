@@ -5,4 +5,4 @@ const MyButton = ({onClick,children,className,id}:MyButtonProps) => {
     return <button id={id&&id} onClick={onClick} className={className?className:""}>{children}</button>
 }
 
-export default MyButton
+export default React.memo(MyButton)

@@ -37,14 +37,15 @@ const LoginBox = () => {
       password: userData.password,
     };
     axios
-      .post("http://3.36.57.184/api/auth/login", userLogin)
+      .post("http://15.165.19.237:8080/api/auth/login", userLogin)
       .then((res) => {
         console.log(
           res.data.accessToken,
           "리프레시 토큰",
           res.data.refreshToken
         );
-        setCookie("login", `${res.data.token}`);
+        setCookie("accessToken", res.data.accessToken);
+        setCookie("refreshToken", res.data.refreshToken);
         navigate("/main", { replace: true });
       })
       .catch((err) => {

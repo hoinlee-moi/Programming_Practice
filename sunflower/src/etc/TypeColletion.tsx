@@ -33,7 +33,7 @@ export type MakeModalUploadProps = {
 };
 
 export type MyCanvasProps = {
-  imageSrc: string;
+  imageSrc: File|null;
 };
 
 //Recoil 타입
@@ -43,7 +43,7 @@ export type UserToken = {
 };
 export type CreatPostType = {
   postContents: string;
-  postImageUrls: string[];
+  // postImageUrls: FormData;
   menuList: string[];
   nuCarbs: number;
   nuProtein: number;
@@ -62,9 +62,10 @@ export type CreatMenuType = {
 
 //CreatePost type
 export type Foodnutrient = {
+  foodCode: string; 
   foodName: string;
-  nuCarbs: number;
-  nuProtein: number;
-  nuFat: number;
-  nuKcal: number;
+  nuCarbs: string;
+  nuProtein: string;
+  nuFat: string;
+  nuKcal: string;
 };

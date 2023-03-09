@@ -1,3 +1,4 @@
+import { create } from "domain";
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
 import { MakeModalProps } from "../../etc/TypeColletion";
@@ -16,6 +17,8 @@ import MakeModalContent from "./MakeModalContent";
 const MakeModal = ({ closeModal }: MakeModalProps) => {
   const postContent = useRecoilValue(CreateContentsData);
   const postMenu = useRecoilValue(CreateMenuData);
+  const resetPostContent = useResetRecoilState(CreateContentsData)
+  const resetPostMenu = useResetRecoilState(CreateMenuData)
   const createPost = useRecoilValue(CreatePost);
   const uploadedImages = useRecoilValue(UploadFiles);
   const uploadedImagesReset = useResetRecoilState(UploadFiles);
@@ -65,13 +68,25 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
       alert("없음!");
       return;
     }
+    const createFormData = new FormData()
+    // uploadedImages.map((val,idx)=>{
+    //   createFormData.append(`file${idx}`,val)
+    // })
+    // postImageUrls : imgForm,
     const newPostData = {
       postContents : postContent,
-      postImageUrls : uploadedImages,
-      mealCount:1,
+      mealCount:"ONE_MEAL",
       ...postMenu,
     };
-    createPost(newPostData)
+    for(const[key,value]of Object.entries(newPostData)){
+      createFormData.append(key,value.toString())
+    }
+    uploadedImages.forEach((item:any)=>{
+      createFormData.append('files',item)
+    })
+    createPost(createFormData)
+    resetPostContent()
+    resetPostMenu()
   };
 
   return (

@@ -5,9 +5,37 @@ import { UploadFiles } from "./Recoil/RecoilState";
 
 const MyCanvas = ({imageSrc}:MyCanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
-    // console.log(imageSrc,canvasRef)
     useEffect(() => {
-        if (!canvasRef) return;
+        if (imageSrc) {
+            const reader = new FileReader();
+            reader.onload = () => {
+              const img = new Image();
+              img.onload = () => {
+                const canvas = canvasRef.current;
+                if (canvas) {
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+                  const ctx = canvas.getContext('2d');
+                  if (ctx) {
+                    ctx.drawImage(img, 0, 0);
+                  }
+                }
+              };
+              img.src = reader.result as string;
+            };
+            reader.readAsDataURL(imageSrc);
+          }
+      }, [imageSrc]);
+    
+    return <canvas ref={canvasRef} />
+}
+
+export default MyCanvas
+
+
+
+/*
+if (!canvasRef) return;
         const ctx = canvasRef.current?.getContext("2d");
         const image = new Image();
         image.src = imageSrc 
@@ -15,8 +43,4 @@ const MyCanvas = ({imageSrc}:MyCanvasProps) => {
         image.onload = function() {
             ctx?.drawImage(image, 0, 0);
           };
-      }, [canvasRef]);
-    return <canvas ref={canvasRef} />
-}
-
-export default MyCanvas
+*/

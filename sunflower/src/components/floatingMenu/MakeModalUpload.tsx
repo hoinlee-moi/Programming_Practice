@@ -9,7 +9,7 @@ import MakeModalWrite from "./MakeModalWrite";
 const MakeModalUpload = () => {
   const [uploadedImages, setUploadedImages] = usefileUpload({
     list: [],
-    max: 5,
+    max: 4,
   });
   const [uploadAlert, setUploadAlert] = useAlert(false);
   const uploadBoxRef = useRef<HTMLLabelElement>(null);
@@ -21,7 +21,7 @@ const MakeModalUpload = () => {
 
     const changeHandler = (e: any) => {
       const files = e.target.files;
-      if (files.length > 5 || uploadedImages.length > 4) {
+      if (files.length > 4 || uploadedImages.length > 3) {
         setUploadAlert();
         return;
       }
@@ -33,7 +33,7 @@ const MakeModalUpload = () => {
       e.stopPropagation();
       if (e.dataTransfer !== null) {
         const files = e.dataTransfer.files;
-        if (files.length > 5 || uploadedImages.length > 4) {
+        if (files.length > 4 || uploadedImages.length > 3) {
           setUploadAlert();
           return;
         }

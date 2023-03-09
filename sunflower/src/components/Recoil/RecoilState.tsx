@@ -1,41 +1,49 @@
-import axios from "axios"
-import { atom } from "recoil"
-import { CreatMenuType, CreatPostType } from "../../etc/TypeColletion"
+import axios from "axios";
+import { atom } from "recoil";
+import { getCookie } from "../../etc/Cookie";
+import { CreatMenuType, CreatPostType } from "../../etc/TypeColletion";
 
 export const FloatingMenuWidth = atom<number | undefined>({
-    key : "FloatingMenuWidth",
-    default : 0
-})
+  key: "FloatingMenuWidth",
+  default: 0,
+});
 
-export const UploadFiles = atom<string[]>({
-    key : "UploadFiles",
-    default : []
-})
+export const UploadFiles = atom<File[]>({
+  key: "UploadFiles",
+  default: [],
+});
 
 export const CreateContentsData = atom<string>({
-    key: "CreateContentsData",
-    default:""
-})
+  key: "CreateContentsData",
+  default: "",
+});
 
 export const CreateMenuData = atom<CreatMenuType>({
-    key: "CreatePost",
-    default : {
-        menuList : [],
-        nuCarbs : 0,
-        nuProtein : 0,
-        nuFat : 0,
-        nuKcal : 0
-    }
-})
+  key: "CreatePost",
+  default: {
+    menuList: [],
+    nuCarbs: 0,
+    nuProtein: 0,
+    nuFat: 0,
+    nuKcal: 0,
+  },
+});
 
-export const CreatePost = atom<(data:CreatPostType)=>void>({
-    key:"createPost",
-    default: async (data)=>{
-        console.log("저장데이터",data)
-        await axios.post("http://3.36.57.184/api/posts",data).then(res=>{
-            console.log(res)
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
-})
+export const CreatePost = atom<(data:FormData) => void>({
+  key: "createPost",
+  default: async (data) => {
+    await axios
+      .post("http://15.165.19.237:8080/posts/", data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+});

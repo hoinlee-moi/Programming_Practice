@@ -7,19 +7,11 @@ export default (initalValue: any) => {
   const [uploadedImages, setUploadedImages] = useRecoilState<any>(UploadFiles)
   // const [uploadedImages, setUploadedImages] = useState(initalValue.list);
   const handleFiles = useCallback(
-    (files: FileList) => {
+    (files: File[]) => {
+      console.log(files,uploadedImages)
       if (files.length > initalValue.max) return;
-      for (const file of files) {
-        if (!file.type.startsWith("image/")) continue;
-        const reader = new FileReader();
-        reader.onloadend = (e) => {
-          const result = e.target?.result;
-          if (result) {
-            setUploadedImages((state:any)=>[...state, result].slice(0, initalValue.max));
-          }
-        };
-        reader.readAsDataURL(file);
-      }
+      setUploadedImages((state:File[])=>[...state, ...files].slice(0, initalValue.max));
+      
     },
     [uploadedImages]
   );
