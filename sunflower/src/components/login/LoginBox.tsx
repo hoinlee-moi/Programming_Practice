@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 
@@ -27,9 +27,9 @@ const LoginBox = () => {
     setLoginFail(false);
   }, [userData]);
 
-  const kakaoLoginHandle = () => {
+  const kakaoLoginHandle = useCallback(() => {
     window.open(KAKAO_AUTH_URL, "카카오 로그인", "width = 400px, height=500px");
-  };
+  },[]);
 
   const loginHandle = () => {
     const userLogin = {

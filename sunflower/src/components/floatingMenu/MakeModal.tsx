@@ -69,10 +69,6 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
       return;
     }
     const createFormData = new FormData()
-    // uploadedImages.map((val,idx)=>{
-    //   createFormData.append(`file${idx}`,val)
-    // })
-    // postImageUrls : imgForm,
     const newPostData = {
       postContents : postContent,
       mealCount:"ONE_MEAL",
@@ -85,6 +81,7 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
       createFormData.append('files',item)
     })
     createPost(createFormData)
+    closeModal()
     resetPostContent()
     resetPostMenu()
   };
