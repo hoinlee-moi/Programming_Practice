@@ -8,48 +8,52 @@
   align-items: center;
 }
 .login h3 {
+  margin: 20px 0 20px 0;
+
   font-size: 24px;
   font-weight: bold;
-
-  margin: 20px 0 20px 0;
 }
 
 .loginContainer {
   width: 900px;
   height: 650px;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: 1px 1px 15px gray;
   background-color: #ffffff;
 }
-@media (max-width:400) {
+
+@media (max-width: 400) {
   .loginContainer {
     width: 90vw;
   }
 }
+
 /* loginSection */
 .loginSection {
+  width: 50%;
+  height: 100%;
+  padding: 40px 20px 30px 20px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 50%;
-  height: 100%;
-  padding: 40px 20px 30px 20px;
 }
 
 .loginSection h4 {
+  margin-bottom: 20px;
+
   font-weight: bold;
   font-size: 24px;
-  margin-bottom: 20px;
 }
 .loginBox {
   width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +68,16 @@
 
   border: none;
   background-color: #e2e2e2;
+}
 
+.spanDisplay {
+  margin-bottom: 10px;
+
+  font-size: 15px;
+  color: red;
+}
+.spanDisplayNone {
+  display: none;
 }
 
 .loginBox button {
@@ -74,7 +87,8 @@
   border-radius: 20px;
   border: none;
 
-  background-color: #fae100;
+  background-color: #ff8e81;
+  cursor: pointer;
 }
 
 /* KokaoLoginBox */
@@ -85,41 +99,79 @@
   align-items: center;
 }
 .KakaoLoginBox p {
-  font-size: 12px;
   margin: 10px 0 10px 0;
+
+  font-size: 12px;
 }
 .KakaoLoginBox button {
   width: 80%;
+
   padding: 0;
+
   border: none;
+  cursor: pointer;
 }
 .KakaoLoginBox img {
   width: 100%;
+
   cursor: pointer;
 }
 
 /* signUpSection */
 
 .signUpSection {
+  width: 50%;
+  height: 100%;
+
+  padding: 40px 20px 30px 20px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  width: 50%;
-  height: 100%;
-  padding: 40px 20px 30px 20px;
 }
 
 .signUpSection h2 {
+  margin-bottom: 20px;
+
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+}
+
+.signUpSection span {
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: red;
+}
+
+.signUpEmailSection {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signUpEmailCheck {
+  position: absolute;
+  right: 30px;
+  
+  width: 15%;
+  height: 70%;
+
+  margin-bottom: 15px;
+
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  background-color: #ff8e81;
+  cursor: pointer;
 }
 
 .signUpSection input {
   width: 80%;
   height: 25px;
+
   padding: 5px 10px 5px 10px;
   margin-bottom: 15px;
 
@@ -127,13 +179,14 @@
   background-color: #e2e2e2;
 }
 
-.signUpSection button {
+.signUpBtn {
   width: 150px;
   height: 40px;
 
   border-radius: 20px;
   border: none;
 
-  background-color: #fae100;
+  background-color: #ff8e81;
+  cursor: pointer;
 }
 
