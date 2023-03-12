@@ -36,6 +36,10 @@ export type MyCanvasProps = {
   imageSrc: File|null;
 };
 
+export type SearchMenuProps = {
+  closeSearch : ()=>void
+  closeState:boolean
+}
 //Recoil 타입
 export type UserToken = {
   AccessToken: string;

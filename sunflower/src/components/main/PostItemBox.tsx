@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { PostItemBoxProps } from "../../etc/TypeColletion";
 import PostItem from "./PostItem";
-import styles from "./postList.module.css";
+import styles from "./PostList.module.css";
 
 
 

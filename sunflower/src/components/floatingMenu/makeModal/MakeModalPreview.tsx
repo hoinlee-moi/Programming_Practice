@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import { useRecoilValue } from "recoil"
-import MyCanvas from "../MyCanvas";
-import { UploadFiles } from "../Recoil/RecoilState"
-import styles from "./FloatingMenu.module.css";
+import MyCanvas from "../../MyCanvas";
+import { UploadFiles } from "../../Recoil/RecoilState"
+import styles from "./MakeModal.module.css";
 
 const MakeModalPreview = () => {
     const uploadedImages = useRecoilValue(UploadFiles)

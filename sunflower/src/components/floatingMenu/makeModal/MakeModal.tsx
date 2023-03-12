@@ -1,17 +1,17 @@
 import { create } from "domain";
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
-import { MakeModalProps } from "../../etc/TypeColletion";
+import { MakeModalProps } from "../../../etc/TypeColletion";
 
-import AlertModal from "../AlertModal";
-import MyButton from "../MyButton";
+import AlertModal from "../../AlertModal";
+import MyButton from "../../MyButton";
 import {
   UploadFiles,
   CreatePost,
   CreateContentsData,
   CreateMenuData,
-} from "../Recoil/RecoilState";
-import styles from "./FloatingMenu.module.css";
+} from "../../Recoil/RecoilState";
+import styles from "./MakeModal.module.css";
 import MakeModalContent from "./MakeModalContent";
 
 const MakeModal = ({ closeModal }: MakeModalProps) => {

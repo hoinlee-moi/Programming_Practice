@@ -6,7 +6,7 @@ import { dummy } from "../../dummy";
 import { getCookie } from "../../etc/Cookie";
 import { FloatingMenuWidth } from "../Recoil/RecoilState";
 import PostItemBox from "./PostItemBox";
-import styles from "./postList.module.css";
+import styles from "./PostList.module.css";
 
 const PostList = () => {
   const menuWidth = useRecoilValue(FloatingMenuWidth);
@@ -22,20 +22,9 @@ const PostList = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
 
-    // axios.get("http://15.165.19.237:8080/posts").then(res=>{
-    //   console.log(res)
-    // }).catch(err=>{
-    //   console.log(err)
-    // })
+
   }, []);
-  /*axios({
-  method: 'get',
-  url: 'url',
-  headers: 
-  'Content-Type':'application/json',
-  'X-Requested-With': 'XMLHttpRequest',
-}) */
-  //데이터 받을 때 5개씩 묶여서 오는게 가능한지
+
   return (
     <div
       className={styles.postListContianer}

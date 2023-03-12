@@ -1,4 +1,4 @@
-import styles from "./postList.module.css"
+import styles from "./PostList.module.css"
 
 const PostItem = ({idx}:{idx:number}) => {
     return <div className={styles.postItemBoxRight} key={idx}>

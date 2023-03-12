@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { getCookie } from "../../etc/Cookie";
-import { Foodnutrient } from "../../etc/TypeColletion";
-import useAlert from "../../hooks/useAlert";
-import MyButton from "../MyButton";
-import { CreateContentsData, CreateMenuData } from "../Recoil/RecoilState";
+import { getCookie } from "../../../etc/Cookie";
+import { Foodnutrient } from "../../../etc/TypeColletion";
+import useAlert from "../../../hooks/useAlert";
+import MyButton from "../../MyButton";
+import { CreateContentsData, CreateMenuData } from "../../Recoil/RecoilState";
 
-import styles from "./FloatingMenu.module.css";
+import styles from "./MakeModal.module.css";
 
 const MakeModalWrite = () => {
   const [content, setContent] = useRecoilState(CreateContentsData);

@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { UploadFiles } from "../Recoil/RecoilState";
+import { UploadFiles } from "../../Recoil/RecoilState";
 
-import styles from "./FloatingMenu.module.css";
+import styles from "./MakeModal.module.css";
 import MakeModalUpload from "./MakeModalUpload";
 import MakeModalWrite from "./MakeModalWrite";
 
