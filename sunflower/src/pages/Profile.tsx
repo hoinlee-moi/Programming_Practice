@@ -1,7 +1,13 @@
 const Profile = () => {
-    return <div>
-        <h2>프로필페이지</h2>
+  return (
+    <div className="">
+      <div className="">
+        <section className="profileBox">
+            <div className="profileImgBox"></div>
+        </section>
+      </div>
     </div>
-}
+  );
+};
 
-export default Profile
+export default Profile;
