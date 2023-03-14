@@ -1,10 +1,12 @@
+import ProfileBox from "../components/profile/ProfileBox";
+import ProfileList from "../components/profile/ProfileList";
+
 const Profile = () => {
   return (
     <div className="">
       <div className="">
-        <section className="profileBox">
-            <div className="profileImgBox"></div>
-        </section>
+        <ProfileBox/>
+        <ProfileList />
       </div>
     </div>
   );
