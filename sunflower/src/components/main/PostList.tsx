@@ -14,7 +14,7 @@ const PostList = () => {
 
   useEffect(() => {
     axios
-      .get("http://15.165.19.237:8080/posts/", {
+      .get("/posts/", {
         headers: {
           Authorization: `Bearer ${getCookie("accessToken")}`,
         },

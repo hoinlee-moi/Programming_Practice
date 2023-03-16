@@ -37,7 +37,7 @@ const LoginBox = () => {
       password: userData.password,
     };
     axios
-      .post("http://15.165.19.237:8080/api/auth/login", userLogin)
+      .post("/api/auth/login", userLogin)
       .then((res) => {
         console.log(
           res.data.accessToken,

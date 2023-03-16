@@ -30,7 +30,7 @@ const MakeModalWrite = () => {
     }
     await axios
       .get(
-        `http://15.165.19.237:8080/posts/search-nutrition?keyword=${foodName}`,
+        `/posts/search-nutrition?keyword=${foodName}`,
         {
           headers: {
             Authorization: `Bearer ${getCookie("accessToken")}`,

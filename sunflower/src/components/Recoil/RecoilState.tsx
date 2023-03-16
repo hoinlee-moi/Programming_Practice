@@ -8,6 +8,11 @@ export const FloatingMenuWidth = atom<number | undefined>({
   default: 0,
 });
 
+export const UserEmail = atom<string>({
+  key : "UserEmail",
+  default:""
+})
+
 export const UploadFiles = atom<File[]>({
   key: "UploadFiles",
   default: [],
@@ -33,7 +38,7 @@ export const CreatePost = atom<(data:FormData) => void>({
   key: "createPost",
   default: async (data) => {
     await axios
-      .post("http://15.165.19.237:8080/posts/", data, {
+      .post("/posts/", data, {
         headers: {
             "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${getCookie("accessToken")}`,
