@@ -13,7 +13,7 @@ const SearchMenu = ({ closeSearch, closeState }: SearchMenuProps) => {
       <div className={styles.searchBox}>
         <div className={styles.searchCloseBtn}>
           <label htmlFor="searchCloseBtn">
-            <img src={process.env.PUBLIC_URL + `assets/closeButton.png`} />
+            <img src={`${process.env.PUBLIC_URL}/assets/closeButton.png`} />
           </label>
           <button onClick={closeSearch} id="searchCloseBtn"></button>
         </div>

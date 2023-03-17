@@ -76,7 +76,7 @@ const MakeModalWrite = () => {
           {/* 플랙스 넣기 */}
           <div className={styles.profileImgBox}>
             <img
-              src={process.env.PUBLIC_URL + `/assets/basic_profile.jpg`}
+              src={`${process.env.PUBLIC_URL}/assets/basic_profile.jpg`}
               //   유저 프로필 있으면 사진이 들어가도록 변경
               className={styles.profileImg}
             />
@@ -104,7 +104,7 @@ const MakeModalWrite = () => {
           onKeyDown={enterKeyEvent}
         />
         <label htmlFor="foodCalPlusBtn" className={styles.foodCalPlus}>
-          <img src={process.env.PUBLIC_URL + `assets/foodCalIcon.png`} />
+          <img src={`${process.env.PUBLIC_URL}/assets/foodCalIcon.png`} />
         </label>
         <MyButton id="foodCalPlusBtn" onClick={foodCalSearch}>
           추가

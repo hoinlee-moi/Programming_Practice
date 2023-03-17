@@ -7,7 +7,7 @@ const SearchInput = () => {
   return (
     <div className={styles.searchInputBox}>
       <label htmlFor="searchInput">
-        <img src={process.env.PUBLIC_URL + `assets/searchBtn.png`} />
+        <img src={`${process.env.PUBLIC_URL}/assets/searchBtn.png`} />
       </label>
       <input
         id="searchInput"
