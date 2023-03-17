@@ -8,7 +8,7 @@ import { setCookie } from "../../etc/Cookie";
 
 import axios from "axios";
 
-import styles from "../../pages/Login.module.css";
+import styles from "./Login.module.css";
 import MyButton from "../MyButton";
 import { UserToken } from "../../etc/TypeColletion";
 

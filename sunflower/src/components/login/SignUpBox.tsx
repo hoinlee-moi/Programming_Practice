@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, FocusEvent, useEffect } from "react";
 import useInput from "../../hooks/useInput";
-import styles from "../../pages/Login.module.css";
+import styles from "./Login.module.css";
 import AlertModal from "../AlertModal";
 
 const reg = {
