@@ -29,3 +29,17 @@
     height: 100%;
     background-color: aqua;
 }
+.profileListWrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.profileListBox {
+    width: 100%;
+    min-height: 220px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 0;
+    background-color:bisque;
+}

@@ -1,13 +1,14 @@
+import axios from "axios";
 import { create } from "domain";
 import React, { useState, useEffect, useCallback } from "react";
 import { useRecoilValue, useResetRecoilState } from "recoil";
+import { getCookie } from "../../../etc/Cookie";
 import { MakeModalProps } from "../../../etc/TypeColletion";
 
 import AlertModal from "../../AlertModal";
 import MyButton from "../../MyButton";
 import {
   UploadFiles,
-  CreatePost,
   CreateContentsData,
   CreateMenuData,
 } from "../../Recoil/RecoilState";
@@ -19,7 +20,6 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
   const postMenu = useRecoilValue(CreateMenuData);
   const resetPostContent = useResetRecoilState(CreateContentsData)
   const resetPostMenu = useResetRecoilState(CreateMenuData)
-  const createPost = useRecoilValue(CreatePost);
   const uploadedImages = useRecoilValue(UploadFiles);
   const uploadedImagesReset = useResetRecoilState(UploadFiles);
   const [modalAlert, setModalAlert] = useState(false);
@@ -62,6 +62,22 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
     }
     closeModal();
   };
+  const createPost = async(data:FormData)=>{
+    await axios
+      .post("/posts/", data, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+   
 
   const createPostHandle = () => {
     if (postContent.trim().length < 1 || postMenu.menuList.length < 1) {
@@ -85,6 +101,7 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
     resetPostContent()
     resetPostMenu()
   };
+
 
   return (
     <section className={styles.modal} onMouseDown={closeCheckHandle}>

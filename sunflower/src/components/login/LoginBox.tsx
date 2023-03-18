@@ -1,22 +1,21 @@
-import React, { useState, useEffect,useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 import useInput from "../../hooks/useInput";
 import { setCookie } from "../../etc/Cookie";
-
 
 import axios from "axios";
 
 import styles from "./Login.module.css";
 import MyButton from "../MyButton";
-import { UserToken } from "../../etc/TypeColletion";
+import { UserEmail } from "../Recoil/RecoilState";
 
 const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${process.env.REACT_APP_KAKAOLOGIN_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAOLOGIN_REDIRECT_URI}`;
 
 const LoginBox = () => {
   const navigate = useNavigate();
-  // const [token,SetUserToken] = useRecoilState<UserToken[]>(userToken)
+  const userEmail = useSetRecoilState(UserEmail);
   const [loginFail, setLoginFail] = useState(false);
   const [userData, setUserData] = useInput({
     email: "",
@@ -29,21 +28,17 @@ const LoginBox = () => {
 
   const kakaoLoginHandle = useCallback(() => {
     window.open(KAKAO_AUTH_URL, "카카오 로그인", "width = 400px, height=500px");
-  },[]);
+  }, []);
 
-  const loginHandle = () => {
+  const loginHandle = async () => {
     const userLogin = {
       emailId: userData.email,
       password: userData.password,
     };
-    axios
+    await axios
       .post("/api/auth/login", userLogin)
       .then((res) => {
-        console.log(
-          res.data.accessToken,
-          "리프레시 토큰",
-          res.data.refreshToken
-        );
+        userEmail(res.data.emailId);
         setCookie("accessToken", res.data.accessToken);
         setCookie("refreshToken", res.data.refreshToken);
         navigate("/main", { replace: true });
