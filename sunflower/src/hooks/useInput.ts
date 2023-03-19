@@ -8,6 +8,7 @@ export default (initalValue:any): UserInputProps => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       if (typeof data === "string") {
         setData(e.target.value);
+        return;
       }
       const { value, name } = e.target;
       setData((data: any) => ({ ...data, [name]: value }));
