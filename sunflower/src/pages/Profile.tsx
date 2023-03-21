@@ -9,6 +9,7 @@ import styles from "../components/profile/Profile.module.css"
 const Profile = () => {
   const menuWidth = useRecoilValue(FloatingMenuWidth);
   
+  
   return (
     <>
       <FloatingMenu />

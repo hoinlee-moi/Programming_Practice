@@ -4,7 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import { dummy } from "../../dummy";
 import { getCookie } from "../../etc/Cookie";
-import {useIntersectionObserver} from "../../hooks/useObserver";
+import useObserver from "../../hooks/useObserver";
 import { FloatingMenuWidth } from "../Recoil/RecoilState";
 import PostItemBox from "./PostItemBox";
 import styles from "./PostList.module.css";
@@ -14,43 +14,52 @@ const PostList = () => {
   const [postItemList, setPostListItem] = useState(dummy);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  
 
   useEffect(() => {
     getPostList();
   }, []);
 
-  const getPostList = async () => {
-    console.log(page)
-    setLoading(false);
+  const getPostList = useCallback(async () => {
+    console.log(page, "실행!");
     await axios
-      .get(`http://52.79.35.132:8080/posts?page=${page}`, {
+      .get(`test/posts?page=${page}`, {
         headers: {
           Authorization: `Bearer ${getCookie("accessToken")}`,
         },
       })
       .then((res) => {
-        console.log(postItemList)
-        setPostListItem((snap) => [...snap, ...res.data.content]);
-        setPage(page+1);
+        console.log(postItemList);
+        // setPostListItem((snap) => [...snap, ...res.data.content]);
+        // setPage(page + 1);
+        // setLoading(false);
       })
       .catch((err) => {
         console.log(err);
-        setPage(page+1);
-      })
-      .finally(() => {
+        setPostListItem((snap) => [...snap, ...dummy]);
         setLoading(true);
       });
-  };
-  // const setObserver = useIntersectionObserver(getPostList);
-  
+  },[page,postItemList]);
+
+  const [observer, setObserver] = useObserver(
+    async (entry: any, observer: any) => {
+      await getPostList();
+      await setPage(prevPage=>prevPage+1);
+    },
+    {}
+  );
+
   return (
     <div
       className={styles.postListContianer}
       style={{ marginLeft: `${menuWidth}px` }}
     >
-      <PostItemBox itemList={postItemList} />
-      {/* {loading && <div ref={setObserver}>Loading...</div>} */}
+      <div>
+        {postItemList.map((item) => {
+          return <PostItemBox itemList={item} />;
+        })}
+      </div>
+
+      {loading && <div ref={setObserver}>Loading...</div>}
     </div>
   );
 };
