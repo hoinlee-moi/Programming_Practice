@@ -24,13 +24,14 @@ const PostList = () => {
     console.log(page)
     setLoading(false);
     await axios
-      .get(`/posts/${page}`, {
+      .get(`http://52.79.35.132:8080/posts?page=${page}`, {
         headers: {
           Authorization: `Bearer ${getCookie("accessToken")}`,
         },
       })
       .then((res) => {
-        setPostListItem((snap) => [...snap, ...res.data]);
+        console.log(postItemList)
+        setPostListItem((snap) => [...snap, ...res.data.content]);
         setPage(page+1);
       })
       .catch((err) => {
@@ -41,14 +42,15 @@ const PostList = () => {
         setLoading(true);
       });
   };
-  const setObserver = useIntersectionObserver(getPostList);
+  // const setObserver = useIntersectionObserver(getPostList);
+  
   return (
     <div
       className={styles.postListContianer}
       style={{ marginLeft: `${menuWidth}px` }}
     >
       <PostItemBox itemList={postItemList} />
-      {loading && <div ref={setObserver}>Loading...</div>}
+      {/* {loading && <div ref={setObserver}>Loading...</div>} */}
     </div>
   );
 };

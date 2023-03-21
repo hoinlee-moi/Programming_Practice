@@ -64,7 +64,7 @@ const MakeModal = ({ closeModal }: MakeModalProps) => {
   };
   const createPost = async(data:FormData)=>{
     await axios
-      .post("/posts/", data, {
+      .post("http://52.79.35.132:8080/posts", data, {
         headers: {
             "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${getCookie("accessToken")}`,

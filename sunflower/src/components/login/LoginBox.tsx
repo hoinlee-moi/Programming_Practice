@@ -27,7 +27,8 @@ const LoginBox = () => {
   }, [userData]);
 
   const kakaoLoginHandle = useCallback(() => {
-    window.open(KAKAO_AUTH_URL, "카카오 로그인", "width = 400px, height=500px");
+    // window.open(KAKAO_AUTH_URL, "카카오 로그인", "width = 400px, height=500px");
+    window.location.href=KAKAO_AUTH_URL
   }, []);
 
   const loginHandle = async () => {
@@ -36,7 +37,7 @@ const LoginBox = () => {
       password: userData.password,
     };
     await axios
-      .post("/api/auth/login", userLogin)
+      .post("http://52.79.35.132:8080/auth/login", userLogin)
       .then((res) => {
         userEmail(res.data.emailId);
         setCookie("accessToken", res.data.accessToken);

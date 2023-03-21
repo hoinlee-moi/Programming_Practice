@@ -57,7 +57,7 @@ const SignUpBox = () => {
     };
 
     axios
-      .post("/api/auth/signup", signData)
+      .post("http://52.79.35.132:8080/auth/signup", signData)
       .then((res) => {
         console.log(res);
         //가입완료
@@ -76,7 +76,7 @@ const SignUpBox = () => {
     }
 
     axios
-      .get(`/api/auth/emailIds/${userData.email}/exists`)
+      .get(`http://52.79.35.132:8080/api/auth/emailIds/${userData.email}/exists`)
       .then((res) => {
         //중복 검사 완료 모달
         console.log(res)
