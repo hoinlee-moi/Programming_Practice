@@ -20,7 +20,6 @@ const PostList = () => {
   }, []);
 
   const getPostList = useCallback(async () => {
-    console.log(page, "실행!");
     await axios
       .get(`test/posts?page=${page}`, {
         headers: {
