@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, FocusEvent, useEffect } from "react";
 import useInput from "../../hooks/useInput";
-import styles from "../../pages/Login.module.css";
+import styles from "./Login.module.css";
 import AlertModal from "../AlertModal";
 
 const reg = {
@@ -57,7 +57,7 @@ const SignUpBox = () => {
     };
 
     axios
-      .post("http://15.165.19.237:8080/api/auth/signup", signData)
+      .post("http://52.79.35.132:8080/auth/signup", signData)
       .then((res) => {
         console.log(res);
         //가입완료
@@ -68,11 +68,6 @@ const SignUpBox = () => {
       });
   };
 
-  const onBlurCheck = (e: FocusEvent<HTMLInputElement>) => {
-    const name = e.target.name;
-    const value = e.target.value;
-  };
-
   const duplicateCheckHandle = () => {
     if (!reg.regEmail.test(userData.email)) {
       setDupCheckModalMs("형식에 맞는 Email을 입력해주세요");
@@ -81,7 +76,7 @@ const SignUpBox = () => {
     }
 
     axios
-      .get(`http://15.165.19.237:8080/api/auth/emailIds/${userData.email}/exists`)
+      .get(`http://52.79.35.132:8080/api/auth/emailIds/${userData.email}/exists`)
       .then((res) => {
         //중복 검사 완료 모달
         console.log(res)
@@ -107,7 +102,6 @@ const SignUpBox = () => {
           onChange={setUserData}
           name="email"
           autoComplete="off"
-          onBlur={onBlurCheck}
         />
         <button
           className={styles.signUpEmailCheck}
@@ -129,7 +123,6 @@ const SignUpBox = () => {
         onChange={setUserData}
         name="password"
         autoComplete="off"
-        onBlur={onBlurCheck}
       />
 
       <input

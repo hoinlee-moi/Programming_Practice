@@ -27,6 +27,17 @@ export type PostItemBoxProps = {
     nuKcal: string;
   }[];
 };
+export type PostItemProps = {
+  idx:number;
+  item: {
+    postId: string;
+    postImageUrls: string;
+    postLikeCounts: string;
+    commentCounts: string;
+    mealCount: string;
+    nuKcal: string;
+  }
+}
 export type MakeModalUploadProps = {
   setUploadedImages: (files: FileList | undefined) => [string[], () => void];
   uploadedImages: string[];
@@ -36,6 +47,10 @@ export type MyCanvasProps = {
   imageSrc: File|null;
 };
 
+export type SearchMenuProps = {
+  closeSearch : ()=>void
+  closeState:boolean
+}
 //Recoil 타입
 export type UserToken = {
   AccessToken: string;

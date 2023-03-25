@@ -1,9 +1,20 @@
-import styles from "./postList.module.css"
+import { PostItemProps } from "../../etc/TypeColletion";
+import styles from "./PostList.module.css";
 
-const PostItem = ({idx}:{idx:number}) => {
-    return <div className={styles.postItemBoxRight} key={idx}>
-        <div>이미지 파일</div>
+const PostItem = ({ idx, item }: PostItemProps) => {
+  console.log(item);
+  return (
+    <div className={styles.postItemBoxRight} key={idx}>
+      <div>{item.postImageUrls}</div>
+      <div>
+        {/* 마우스 호버링시 */}
+        <div>
+            <p>{item.postLikeCounts}</p>
+            <p>{item.commentCounts}</p>
+        </div>
+      </div>
     </div>
-}
+  );
+};
 
-export default PostItem
+export default PostItem;

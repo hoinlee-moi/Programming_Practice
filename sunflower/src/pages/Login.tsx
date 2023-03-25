@@ -3,7 +3,7 @@ import React from "react";
 import LoginBox from "../components/login/LoginBox";
 import SignUpBox from "../components/login/SignUpBox";
 
-import styles from "./Login.module.css";
+import styles from "../components/login/Login.module.css";
 
 const Login = () => {
   return (

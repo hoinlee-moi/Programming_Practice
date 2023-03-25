@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MakeModalUploadProps } from "../../etc/TypeColletion";
-import useAlert from "../../hooks/useAlert";
-import usefileUpload from "../../hooks/usefileUpload";
-import styles from "./FloatingMenu.module.css";
+import useAlert from "../../../hooks/useAlert";
+import usefileUpload from "../../../hooks/usefileUpload";
+import styles from "./MakeModal.module.css";
 import MakeModalPreview from "./MakeModalPreview";
 import MakeModalWrite from "./MakeModalWrite";
 

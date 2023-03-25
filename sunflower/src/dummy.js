@@ -1,4 +1,4 @@
-export const dummy = [
+export const dummy = [[
     {
     postId : "test1",
     postImageUrls : "testImg1",
@@ -38,8 +38,8 @@ export const dummy = [
     commentCounts : "댓글 수 5",
     mealCount : "식사수 5",
     nuKcal : "543칼로리"
-},
-    {
+}],
+    [{
     postId : "test6",
     postImageUrls : "testImg6",
     postLikeCounts : "좋아요 수 6",
@@ -78,5 +78,5 @@ export const dummy = [
     commentCounts : "댓글 수 10",
     mealCount : "식사수 10",
     nuKcal : "3421칼로리"
-},
+}],
 ]
