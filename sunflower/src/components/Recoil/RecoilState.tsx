@@ -1,5 +1,10 @@
 import { atom } from "recoil";
-import { CreatMenuType, CreatPostType } from "../../etc/TypeColletion";
+import {
+  CreatMenuType,
+  CreatPostType,
+  PostItemType,
+  UserDataType,
+} from "../../etc/TypeColletion";
 
 export const FloatingMenuWidth = atom<number | undefined>({
   key: "FloatingMenuWidth",
@@ -10,7 +15,8 @@ export const UserEmail = atom<string>({
   key: "UserEmail",
   default: "",
 });
-export const UserData = atom({
+
+export const UserData = atom<UserDataType>({
   key: "UserData",
   default: {
     gender: "",
@@ -18,6 +24,22 @@ export const UserData = atom({
     userContents: "",
     userImageUrl: "",
   },
+});
+
+export const PostItemList = atom<PostItemType[][]>({
+  key: "PostItemList",
+  default: [
+    [
+      {
+        postId: "",
+        postImageUrls: "",
+        postLikeCounts: "",
+        commentCounts: "",
+        mealCount: "",
+        nuKcal: "",
+      },
+    ],
+  ],
 });
 
 export const UploadFiles = atom<File[]>({
