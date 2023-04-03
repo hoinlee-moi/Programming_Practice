@@ -11,13 +11,13 @@ import styles from "./PostList.module.css";
 
 const PostList = () => {
   const menuWidth = useRecoilValue(FloatingMenuWidth);
-  // const [postItemList, setPostListItem] = useState(dummy);
   const [postItemList, setPostListItem] = useRecoilState(PostItemList);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getPostList();
+    setPostListItem(dummy)
   }, []);
 
   const getPostList = useCallback(async () => {

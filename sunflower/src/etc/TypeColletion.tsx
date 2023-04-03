@@ -51,6 +51,10 @@ export type SearchMenuProps = {
   closeSearch: () => void;
   closeState: boolean;
 };
+
+export type DetailItemProps = {
+  closeModal: () => void
+}
 //Recoil 타입
 export type UserToken = {
   AccessToken: string;
