@@ -7,10 +7,11 @@ const PostItem = ({ idx, item }: PostItemProps) => {
   const [detailModal, setDetailModal] = useState(false);
 
   return (
+    <>
     <div
       className={styles.postItemBox}
       key={idx}
-      onClick={() => setDetailModal(!detailModal)}
+      onClick={() => setDetailModal(true)}
     >
       <div>{item.postImageUrls}</div>
       <div>
@@ -20,10 +21,11 @@ const PostItem = ({ idx, item }: PostItemProps) => {
           <p>{item.commentCounts}</p>
         </div>
       </div>
-      {detailModal && (
-        <DetailItem closeModal={() => setDetailModal(!detailModal)} />
-      )}
     </div>
+      {detailModal && (
+        <DetailItem closeModal={() => setDetailModal(false)} />
+      )}
+    </>
   );
 };
 
