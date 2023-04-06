@@ -62,3 +62,8 @@ export const CreateMenuData = atom<CreatMenuType>({
     nuKcal: 0,
   },
 });
+
+export const DetailItemModal = atom<boolean>({
+  key : "DetailItemModal",
+  default: false
+})

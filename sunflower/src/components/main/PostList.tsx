@@ -5,7 +5,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { dummy } from "../../dummy";
 import { getCookie } from "../../etc/Cookie";
 import useObserver from "../../hooks/useObserver";
-import { FloatingMenuWidth, PostItemList } from "../Recoil/RecoilState";
+import { DetailItemModal, FloatingMenuWidth, PostItemList } from "../Recoil/RecoilState";
+import DetailItem from "./DetailItem";
 import PostItemBox from "./PostItemBox";
 import styles from "./PostList.module.css";
 
@@ -14,6 +15,7 @@ const PostList = () => {
   const [postItemList, setPostListItem] = useRecoilState(PostItemList);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [detailModal, setDetailModal] = useRecoilState(DetailItemModal);
 
   useEffect(() => {
     getPostList();
@@ -49,6 +51,7 @@ const PostList = () => {
   );
 
   return (
+    <>
     <div
       className={styles.postListContianer}
       style={{ marginLeft: `${menuWidth}px` }}
@@ -58,9 +61,12 @@ const PostList = () => {
           return <PostItemBox itemList={item} />;
         })}
       </div>
-
       {loading && <div ref={setObserver}>Loading...</div>}
     </div>
+    {detailModal && (
+      <DetailItem />
+    )}
+    </>
   );
 };
 

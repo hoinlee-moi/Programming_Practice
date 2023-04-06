@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { useSetRecoilState } from "recoil";
 import { PostItemProps } from "../../etc/TypeColletion";
+import { DetailItemModal } from "../Recoil/RecoilState";
 import DetailItem from "./DetailItem";
 import styles from "./PostList.module.css";
 
 const PostItem = ({ idx, item }: PostItemProps) => {
-  const [detailModal, setDetailModal] = useState(false);
-
+  const setDetailModal = useSetRecoilState(DetailItemModal)
   return (
-    <>
     <div
       className={styles.postItemBox}
       key={idx}
@@ -22,10 +22,6 @@ const PostItem = ({ idx, item }: PostItemProps) => {
         </div>
       </div>
     </div>
-      {detailModal && (
-        <DetailItem closeModal={() => setDetailModal(false)} />
-      )}
-    </>
   );
 };
 

@@ -1,9 +1,12 @@
-import { DetailItemProps } from "../../etc/TypeColletion";
+import { useSetRecoilState } from "recoil";
+import { DetailItemModal } from "../Recoil/RecoilState";
 import styles from "./DetailItem.module.css";
 
-const DetailItem = ({ closeModal }: DetailItemProps) => {
+const DetailItem = () => {
+  const closeModal = useSetRecoilState(DetailItemModal)
+  // `${process.env.PUBLIC_URL}/assets/foodCalIcon.png`
   return (
-    <section className={styles.modalBackground} onMouseDown={closeModal}>
+    <section className={styles.modalBackground} onMouseDown={()=>closeModal(false)}>
       <div
         className={styles.modalContainer}
         onMouseDown={(e) => e.stopPropagation()}
