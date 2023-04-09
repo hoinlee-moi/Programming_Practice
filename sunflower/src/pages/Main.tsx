@@ -12,7 +12,10 @@ const Main = () => {
   const userEmail = useRecoilValue(UserEmail)
   const userData = useSetRecoilState(UserData)
   console.log(userEmail)
-  useEffect(()=>{
+  useEffect(()=>{   
+      window.onbeforeunload = () => {
+        window.scrollTo(0, 0);
+      };
     userDataLoad()
   },[])
 
