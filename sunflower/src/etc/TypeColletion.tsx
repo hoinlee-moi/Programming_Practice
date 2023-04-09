@@ -28,7 +28,7 @@ export type PostItemBoxProps = {
   }[];
 };
 export type PostItemProps = {
-  idx:number;
+  idx: number;
   item: {
     postId: string;
     postImageUrls: string;
@@ -36,21 +36,23 @@ export type PostItemProps = {
     commentCounts: string;
     mealCount: string;
     nuKcal: string;
-  }
-}
+  };
+};
 export type MakeModalUploadProps = {
   setUploadedImages: (files: FileList | undefined) => [string[], () => void];
   uploadedImages: string[];
 };
 
 export type MyCanvasProps = {
-  imageSrc: File|null;
+  imageSrc: File | null;
 };
 
 export type SearchMenuProps = {
-  closeSearch : ()=>void
-  closeState:boolean
-}
+  closeSearch: () => void;
+  closeState: boolean;
+};
+
+
 //Recoil 타입
 export type UserToken = {
   AccessToken: string;
@@ -66,6 +68,13 @@ export type CreatPostType = {
   nuKcal: number;
 };
 
+export type UserDataType = {
+  gender: string;
+  nickname: string;
+  userContents: string;
+  userImageUrl: string;
+};
+
 export type CreatMenuType = {
   menuList: string[];
   nuCarbs: number;
@@ -74,10 +83,18 @@ export type CreatMenuType = {
   nuKcal: number;
 };
 
+export type PostItemType = {
+  postId: string;
+  postImageUrls: string;
+  postLikeCounts: string;
+  commentCounts: string;
+  mealCount: string;
+  nuKcal: string;
+};
 
 //CreatePost type
 export type Foodnutrient = {
-  foodCode: string; 
+  foodCode: string;
   foodName: string;
   nuCarbs: string;
   nuProtein: string;
