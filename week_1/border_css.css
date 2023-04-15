@@ -1,0 +1,63 @@
+.box {
+    width: 400px;
+    height: 400px;
+    border: 10px solid aquamarine;
+    /* border-color:aquamarine;
+    border-width: 5px;
+    border-style: groove; */
+}
+.box_margin {
+  border: 1px solid red;
+  width: 400px;
+  height: 400px;
+  margin: 100px;
+  padding: 100px;
+}
+
+.heading {
+  border: 1px solid red;
+  width: 300px;
+  text-align: center;
+  margin: 100px;
+  padding: 100px 50px;
+}
+
+.box1,
+.box2,
+.box3,
+.box5,
+.box4,
+.box6,
+.box7,
+.box8 {
+  width: 200px;
+  height: 200px;
+  background-color: dodgerblue;
+  border: 10px solid orange;
+  margin: 10px;
+  float: left;
+}
+.box1 {
+  border-radius: 20px;
+}
+.box2 {
+  border-radius: 50px;
+}
+.box3 {
+  border-radius: 100%;
+}
+.box4 {
+  border-radius: 50px 0 50px 0;
+}
+.box5 {
+  border-radius: 200px 0 0 0;
+}
+.box6 {
+  border-radius: 100% 100% 100% 0;
+}
+.box7 {
+  border-radius: 100% 0 100% 0;
+}
+.box8 {
+  border-radius: 100px 100px 0 0;
+}
