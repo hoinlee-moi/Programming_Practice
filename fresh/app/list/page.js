@@ -1,14 +1,21 @@
-export default function List() {
+import Image from "next/image";
+import picture from "/public/food0.png"
 
-    return (
-        <div>
-            <h4 className="title">상품목록</h4>
-            <div className="food">
-                <h4>상품1 $40</h4>
-            </div>
-            <div className="food">
-                <h4>상품2 $20</h4>
-            </div>
-        </div>
-    )
+export default function List() {
+  let product = ["Tomatoes", "Pasta", "Coconut"];
+
+  return (
+    <div>
+      <h4 className="title">상품목록</h4>
+      {product.map((item,idx) => {
+        return (
+          <div className="food" key={idx}>
+            {/* <Image src={picture} className="food-img" /> */}
+            <img src={`/food${idx}.png`} className="food-img" />
+            <h4>{item} $40</h4>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
