@@ -1,10 +1,12 @@
 import "../globals.css";
+import Banner from "./Banner";
 
 export default function RootLayout({ children }) {
   return (
     <div>
       {children}
-      <p>현대카드 무이자 이벤트중</p>
+      <Banner cardName="롯데카드"/>
+      <Banner cardName="현대카드"/>
     </div>
   );
 }
