@@ -1,5 +1,104 @@
 .sectionContainer01 {
-    position: relative;
-    height: 100vh;
-    background-color: #e0d4d4;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.contentSection {
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  top: calc(50% - 150px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.contentSection p {
+  font-size: 50px;
+  font-weight: 600;
+  animation: ani 10s linear infinite;
+  opacity: 0;
+}
+.pictureSection {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: calc(50% - 200px);
+  padding: 30px 80px;
+  z-index: 1;
+
+}
+.pictureSection div {
+  width: 12%;
+  height: 300vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+  opacity: 0;
+}
+
+.pictureSection div:nth-child(1) {
+  animation: ani 10s linear infinite;
+}
+.pictureSection div:nth-child(2) {
+  padding-top: 100px;
+  animation: ani 10s linear infinite;
+  animation-delay: 0.2s;
+}
+.pictureSection div:nth-child(3) {
+  padding-top: 200px;
+  animation: ani 10s linear infinite;
+  animation-delay: 0.4s;
+}
+.pictureSection div:nth-child(4) {
+  padding-top: 300px;
+  animation: ani 10s linear infinite;
+  animation-delay: 0.6s;
+}
+.pictureSection div:nth-child(5) {
+  padding-top: 200px;
+  animation: ani 10s linear infinite;
+  animation-delay: 0.8s;
+}
+.pictureSection div:nth-child(6) {
+  padding-top: 100px;
+  animation: ani 10s linear infinite;
+  animation-delay: 1s;
+}
+.pictureSection div:nth-child(7) {
+  animation: ani 10s linear infinite;
+  animation-delay: 1.2s;
+}
+.pictureSection div img {
+  width: 235px;
+  height: 350px;
+  margin: 10px 0;
+  object-fit: cover;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+@keyframes ani {
+  0%,
+  10%,25% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  
+  50%,
+  75%,
+  90% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 755px) {
+  .contentSection p {
+    font-size: 7vw;
+  }
 }
