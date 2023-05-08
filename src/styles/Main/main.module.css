@@ -1,4 +1,10 @@
-
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container{
+  overflow-y: auto;
+  height: 100vh;
+}
 .container header {
   position: fixed;
   top: 0;
