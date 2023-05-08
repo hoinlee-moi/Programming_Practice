@@ -1,4 +1,4 @@
-import styles from "../styles/Main/main.module.css";
+import styles from "../styles/main/main.module.css";
 import MainSection01 from "../components/mainComponents/MainSection01";
 import MainSection02 from "../components/mainComponents/MainSection02";
 import MainSection03 from "../components/mainComponents/MainSection03";

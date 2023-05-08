@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styles from "../../styles/Main/mainSection01.module.css";
+import styles from "../../styles/main/mainSection01.module.css";
 import ImageArray from "./ImageArray";
 
 const MainSection01 = () => {
@@ -40,6 +40,11 @@ const MainSection01 = () => {
           </div>
         </article>
       )}
+      <article className={styles.blurSection}>
+        <div>
+          <p>스크롤을 아래로 내려주세요</p>
+        </div>
+      </article>
     </section>
   );
 };

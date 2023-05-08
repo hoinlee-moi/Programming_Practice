@@ -1,3 +1,4 @@
+
 .container header {
   position: fixed;
   top: 0;
@@ -30,12 +31,12 @@
   padding: 10px;
   font-weight: bold;
   border-radius: 5px;
-  background-color: #ff8e81;
+  background-color: #ffaaa1;
   cursor: pointer;
 }
 .signUpBox button:hover {
   color: #000;
-  background-color: #fd7060;
+  background-color: #ff887b;
 }
 
 @media (max-width: 500px) {
