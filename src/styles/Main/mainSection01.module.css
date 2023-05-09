@@ -1,7 +1,6 @@
 .sectionContainer01 {
   position: relative;
   height: 100vh;
-  overflow: hidden;
 }
 .contentSection {
   position: absolute;
@@ -125,6 +124,7 @@
   margin: 10px 0;
   object-fit: cover;
   border-radius: 8px;
+  box-shadow: 2px 2px 5px gray;
 }
 
 .blurSection {

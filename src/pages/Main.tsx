@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, MouseEventHandler } from "react";
 
 import styles from "../styles/main/main.module.css";
 import MainSection01 from "../components/mainComponents/MainSection01";
@@ -20,7 +20,7 @@ const Main = () => {
         const pageHeight = window.innerHeight;
         if (deltaY > 0) {
           if (scrollTop === pageHeight * 2) {
-            scrollEnd();
+            scrollEnd(false);
             return;
           }
           containerRef.current.scrollTo({
@@ -29,7 +29,7 @@ const Main = () => {
           });
         } else {
           if (scrollTop === 0) {
-            scrollEnd();
+            scrollEnd(false);
             return;
           }
           containerRef.current.scrollTo({
@@ -38,7 +38,7 @@ const Main = () => {
             behavior: "smooth",
           });
         }
-        scrollEnd();
+        scrollEnd(true);
       }
     };
     const containerRefCurrent = containerRef.current;
@@ -48,13 +48,22 @@ const Main = () => {
     };
   }, [isScrolling]);
 
-  const scrollEnd = () => {
+  const scrollEnd = (bool:boolean) => {
+    if(bool){
+      setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
+      return;
+    }
     setTimeout(() => {
       setIsScrolling(false);
-    }, 1000);
+    }, 500);
   };
+  const handleMouseDown:MouseEventHandler<HTMLDivElement> =(e) => {
+    if(e.button===1) e.preventDefault()
+  }
   return (
-    <div ref={containerRef} className={styles.container}>
+    <div ref={containerRef} className={styles.container} onMouseDown={handleMouseDown}>
       <header>
         <article className={styles.logoBox}>
           <img src={`${process.env.PUBLIC_URL}/assets/logo.png`} />

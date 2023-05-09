@@ -5,6 +5,9 @@
   overflow-y: auto;
   height: 100vh;
 }
+.container section {
+  overflow: hidden;
+}
 .container header {
   position: fixed;
   top: 0;
