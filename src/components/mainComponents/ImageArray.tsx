@@ -8,15 +8,15 @@ type imgArr = {
 const ImageArray = ({ props, order }: props) => {
   const imgArr: imgArr = {
     a: [0, 1, 2, 0],
-    b: [3, 4, 4, 4],
-    c: [5, 6, 6, 6],
-    d: [6, 6, 6, 6],
-    e: [7, 8, 8, 8],
-    f: [8, 9, 9, 9],
-    g: [10, 11, 11, 11],
+    b: [3, 4, 10, 4],
+    c: [5, 6, 9, 6],
+    d: [6, 1, 10, 9],
+    e: [7, 8, 0, 8],
+    f: [8, 9, 7, 9],
+    g: [10, 11, 1, 0],
   };
   return (
-    <div>
+    <div key={Math.floor(Math.random()*10000+1)}>
       {order
         ? imgArr[props].map((v, idx) => {
             return (

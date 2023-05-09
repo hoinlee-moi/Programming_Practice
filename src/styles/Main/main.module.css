@@ -1,15 +1,16 @@
 .container::-webkit-scrollbar {
   display: none;
 }
-.container{
-  overflow-y: auto;
+.container {
+  position: relative;
   height: 100vh;
+  overflow-y: auto;
 }
 .container section {
   overflow: hidden;
 }
 .container header {
-  position: fixed;
+  position: absolute;
   top: 0;
   z-index: 10;
   width: 100vw;
@@ -17,7 +18,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.493);
+  backdrop-filter: blur(10px);
 }
 .logoBox {
   height: 100%;

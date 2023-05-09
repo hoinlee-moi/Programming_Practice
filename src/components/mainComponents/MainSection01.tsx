@@ -30,12 +30,12 @@ const MainSection01 = () => {
         <article className={styles.pictureSection}>
           <div className={styles.picture1}>
             {imgArr.map((value) => {
-              return <ImageArray props={value} order={true} />;
+              return <ImageArray props={value} order={true} key={value} />;
             })}
           </div>
           <div className={styles.picture2}>
             {imgArr.map((value) => {
-              return <ImageArray props={value} order={false} />;
+              return <ImageArray props={value} order={false} key={value} />;
             })}
           </div>
         </article>

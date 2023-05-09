@@ -3,16 +3,20 @@
 
 body {
   font-family: "Raleway", sans-serif;
-  line-height: 1.5em;
+  line-height: 1.8em;
   margin: 0;
   font-weight: 300;
   height: 100vh;
   overflow: hidden;
 }
-div{
+div,article{
   box-sizing: border-box;
 }
-
+h1,h2,p,span{
+  word-break:keep-all;
+  margin: 0;
+  padding: 0;
+}
 a {
   text-decoration: none;
 }
