@@ -21,7 +21,7 @@ const KakaoLogin = () => {
     .then((res) => {
         setAccessCookie("accessToken", res.data.accessToken);
         setRefreshCookie("refreshToken", res.data.refreshToken);
-        // navigate("/main", { replace: true });
+        navigate("/main", { replace: true });
     })
     .catch((err) => {
         console.log(err)

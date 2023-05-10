@@ -120,7 +120,7 @@ const SignUp = () => {
     [userData.nickname]
   );
 
-  const signUpHandle = async() => {
+  const signUpHandle = useCallback( async() => {
     if (
       userData.email === "" ||
       userData.password === "" ||
@@ -144,15 +144,14 @@ const SignUp = () => {
       };
       try {
         const response = await signUp(signData);
-        if (response === 201) navigate("/")
+        if (response === 201) navigate("/main",{replace:true})
       } catch (err) {
         console.log(err);
-        setNickCheck(true);
-        setAlertMs("사용중인 닉네임입니다");
+        setAlertMs("회원가입에 실패하였습니다. 잠시후 다시 실행해주세요");
       }
       
     }
-  };
+  },[userData]);
 
   return (
     <div>
@@ -208,7 +207,7 @@ const SignUp = () => {
           {nikCheck && <span />}
         </div>
         {alertMs !== "" && <p>{alertMs}</p>}
-        <button>회원가입</button>
+        <button onClick={signUpHandle}>회원가입</button>
       </div>
       <KakaoSignUp />
     </div>
