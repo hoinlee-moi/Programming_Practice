@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import useCookies from "react-cookie/cjs/useCookies";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+
 
 const KakaoLogin = () => {
   const PARAMS = new URL(document.location.href).searchParams;

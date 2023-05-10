@@ -150,13 +150,16 @@
 }
 
 .signUpInput button {
-
   padding: 8px 80px;
   font-size: 20px;
   font-weight: bold;
   border-radius: 30px;
   color: #fff;
   background-color: #414141;
+  cursor: pointer;
+}
+.signUpInput button:hover {
+  background-color: #727272;
 }
 
 .kakaoLogin {

@@ -1,9 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useInput from "../../hooks/useInput";
 
-import styles from "../../styles/main/mainSection03.module.css";
-import { emailDuplicate, nickNameDuplicate } from "../../api";
+import styles from "../../styles/home/homeSection03.module.css";
+import { emailDuplicate, nickNameDuplicate, signUp } from "../../api";
 import KakaoSignUp from "./KakaoSignUp";
+import { useNavigate } from "react-router-dom";
 
 const reg = {
   regPs: new RegExp(
@@ -13,12 +14,15 @@ const reg = {
   regNickname: new RegExp(/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣-_]{2,12}$/),
 };
 const SignUp = () => {
+  const navigate = useNavigate()
   const [userData, setUserData] = useInput({
     email: "",
     password: "",
     passwordCheck: "",
     nickname: "",
   });
+  const [emailDupStatus, setEmailDupStatus] = useState(false);
+  const [nickDupStatus, setNickDupStatus] = useState(false);
   const [emailCheck, setEmailCheck] = useState(false);
   const [psCheck, setPsCheck] = useState(false);
   const [rePsCheck, setRePsCheck] = useState(false);
@@ -29,6 +33,7 @@ const SignUp = () => {
   }, [userData]);
   useEffect(() => {
     setEmailCheck(false);
+    setEmailDupStatus(false);
   }, [userData.email]);
   useEffect(() => {
     setPsCheck(false);
@@ -38,7 +43,9 @@ const SignUp = () => {
   }, [userData.passwordCheck]);
   useEffect(() => {
     setNickCheck(false);
+    setNickDupStatus(false);
   }, [userData.nickname]);
+
   const checkSignUpData = useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
       const inputName = e.target.name;
@@ -66,6 +73,7 @@ const SignUp = () => {
     },
     [userData]
   );
+
   const emailCheckHandle = useCallback(
     async (e: React.FocusEvent<HTMLInputElement>) => {
       const inputValue = e.target.value;
@@ -74,17 +82,21 @@ const SignUp = () => {
         setAlertMs("E-Mail이 올바르지 않습니다");
         return;
       }
-      try {
-        await emailDuplicate(inputValue);
-      } catch (err) {
-        console.log(err);
-        setEmailCheck(true);
-        setAlertMs("사용중인 E-Mail입니다");
-        // 에러 처리
+      if (!emailDupStatus) {
+        try {
+          const response = await emailDuplicate(inputValue);
+          if (response === 200) setEmailDupStatus(true);
+        } catch (err) {
+          console.log(err);
+          setEmailCheck(true);
+          setAlertMs("사용중인 E-Mail입니다");
+          // 에러 처리
+        }
       }
     },
     [userData.email]
   );
+
   const nickCheckHandle = useCallback(
     async (e: React.FocusEvent<HTMLInputElement>) => {
       if (!reg.regNickname.test(e.target.value)) {
@@ -94,16 +106,54 @@ const SignUp = () => {
         );
         return;
       }
+      if (!nickDupStatus) {
+        try {
+          const response = await nickNameDuplicate(e.target.value);
+          if (response === 200) setNickDupStatus(true);
+        } catch (err) {
+          console.log(err);
+          setNickCheck(true);
+          setAlertMs("사용중인 닉네임입니다");
+        }
+      }
+    },
+    [userData.nickname]
+  );
+
+  const signUpHandle = async() => {
+    if (
+      userData.email === "" ||
+      userData.password === "" ||
+      userData.passwordCheck === "" ||
+      userData.nickname === ""
+    ) {
+      setAlertMs("아직 입력되지 않은 부분이 있습니다");
+      return;
+    }
+    if (
+      emailDupStatus &&
+      nickDupStatus &&
+      !emailCheck &&
+      !psCheck &&
+      !rePsCheck
+    ) {
+      const signData = {
+        emailId: userData.email,
+        password: userData.password,
+        nickname: userData.nickname,
+      };
       try {
-        await nickNameDuplicate(e.target.value);
+        const response = await signUp(signData);
+        if (response === 201) navigate("/")
       } catch (err) {
         console.log(err);
         setNickCheck(true);
         setAlertMs("사용중인 닉네임입니다");
       }
-    },
-    [userData.nickname]
-  );
+      
+    }
+  };
+
   return (
     <div>
       <div className={styles.logoImg}>

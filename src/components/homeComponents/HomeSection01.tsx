@@ -1,8 +1,8 @@
 import React,{ useEffect, useState } from "react";
-import styles from "../../styles/main/mainSection01.module.css";
+import styles from "../../styles/home/homeSection01.module.css";
 import ImageArray from "./ImageArray";
 
-const MainSection01 = () => {
+const HomeSection01 = () => {
   const [order, setOrder] = useState(false);
 
   const imgArr = ["a", "b", "c", "d", "e", "f", "g"];
@@ -49,4 +49,4 @@ const MainSection01 = () => {
   );
 };
 
-export default React.memo(MainSection01);
+export default React.memo(HomeSection01);

@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "../../styles/main/mainSection02.module.css";
+import styles from "../../styles/home/homeSection02.module.css";
 
-const MainSection02 = () => {
+const HomeSection02 = () => {
   const imgArr = [12, 13, 14, 15];
   return (
     <section className={styles.sectionContainer02}>
@@ -38,4 +38,4 @@ const MainSection02 = () => {
   );
 };
 
-export default React.memo(MainSection02);
+export default React.memo(HomeSection02);

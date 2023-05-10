@@ -1,12 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import styles from "../../styles/main/mainSection03.module.css";
+import styles from "../../styles/home/homeSection03.module.css";
 import ImageArray from "./ImageArray";
 import SignUp from "./SignUp";
 
 const imgArr = ["a", "b", "c", "d", "e", "f", "g"];
 
-const MainSection03 = () => {
+const HomeSection03 = () => {
   return (
     <section className={styles.sectionContainer03}>
       <article className={styles.backgroundPic}>
@@ -31,4 +31,4 @@ const MainSection03 = () => {
   );
 };
 
-export default React.memo(MainSection03);
+export default React.memo(HomeSection03);

@@ -1,11 +1,11 @@
 import React, { useRef, useEffect, useState, MouseEventHandler } from "react";
 
-import styles from "../styles/main/main.module.css";
-import MainSection01 from "../components/mainComponents/MainSection01";
-import MainSection02 from "../components/mainComponents/MainSection02";
-import MainSection03 from "../components/mainComponents/MainSection03";
+import styles from "../styles/home/home.module.css";
+import HomeSection01 from "../components/homeComponents/HomeSection01";
+import HomeSection02 from "../components/homeComponents/HomeSection02";
+import HomeSection03 from "../components/homeComponents/HomeSection03";
 
-const Main = () => {
+const Home = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isScrolling, setIsScrolling] = useState(false);
 
@@ -73,11 +73,11 @@ const Main = () => {
           <button>회원가입</button>
         </article>
       </header>
-      <MainSection01 />
-      <MainSection02 />
-      <MainSection03 />
+      <HomeSection01 />
+      <HomeSection02 />
+      <HomeSection03 />
     </div>
   );
 };
 
-export default Main;
+export default Home;
