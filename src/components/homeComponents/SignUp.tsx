@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import useInput from "../../hooks/useInput";
 
-import styles from "../../styles/home/homeSection03.module.css";
+import styles from "../../styles/home/homeModal.module.css";
 import { emailDuplicate, nickNameDuplicate, signUp } from "../../api";
 import KakaoSignUp from "./KakaoSignUp";
 import { useNavigate } from "react-router-dom";

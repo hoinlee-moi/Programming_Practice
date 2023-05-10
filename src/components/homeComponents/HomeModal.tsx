@@ -1,18 +1,26 @@
+import React, { useEffect, useState } from "react";
+
 import styles from "../../styles/home/homeModal.module.css";
-const HomeModal = () => {
+import Login from "./Login";
+import SignUp from "./SignUp";
+
+type modalPorps = {
+  content: string;
+  modalClose: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const HomeModal = ({ content, modalClose }: modalPorps) => {
+
   return (
-    <div className={styles.modalBackgorund}>
-      <section>
-        <article>
-          <div className={styles.logoImgBox}>
-            <img src="" alt="" />
-          </div>
-          <h2>해바라기에 오신것을 환영합니다</h2>
-        </article>
-        <article className={styles.loginWrap}>
-            <input type="text" placeholder="E-Mail"/>
-            <input type="password" placeholder="Password"/>
-        </article>
+    <div
+      className={styles.modalBackgorund}
+      onMouseDown={() => modalClose(false)}
+    >
+      <section className={styles.modalContent} onMouseDown={(e) => e.stopPropagation()}>
+        <span onClick={()=>modalClose(false)}/>
+        {
+          content==="signUp"?<SignUp />:<Login/>
+        }
       </section>
     </div>
   );
