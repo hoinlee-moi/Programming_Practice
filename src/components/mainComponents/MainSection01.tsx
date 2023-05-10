@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import styles from "../../styles/main/mainSection01.module.css";
 import ImageArray from "./ImageArray";
 
@@ -49,4 +49,4 @@ const MainSection01 = () => {
   );
 };
 
-export default MainSection01;
+export default React.memo(MainSection01);
