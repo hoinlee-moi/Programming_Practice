@@ -10,17 +10,18 @@ type modalPorps = {
 };
 
 const HomeModal = ({ content, modalClose }: modalPorps) => {
+  const mouseDownHandle = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.button === 0) modalClose(false);
+  };
 
   return (
-    <div
-      className={styles.modalBackgorund}
-      onMouseDown={() => modalClose(false)}
-    >
-      <section className={styles.modalContent} onMouseDown={(e) => e.stopPropagation()}>
-        <span onClick={()=>modalClose(false)}/>
-        {
-          content==="signUp"?<SignUp />:<Login/>
-        }
+    <div className={styles.modalBackgorund} onMouseDown={mouseDownHandle}>
+      <section
+        className={styles.modalContent}
+        onMouseDown={(e) => e.stopPropagation()}
+      >
+        <span onClick={() => modalClose(false)} />
+        {content === "signUp" ? <SignUp /> : <Login />}
       </section>
     </div>
   );

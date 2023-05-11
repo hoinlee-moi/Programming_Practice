@@ -2,9 +2,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import useInput from "../../hooks/useInput";
 
 import styles from "../../styles/home/homeModal.module.css";
-import { emailDuplicate, nickNameDuplicate, signUp } from "../../api";
+import { emailDuplicate, login, nickNameDuplicate, signUp } from "../../api";
 import KakaoSignUp from "./KakaoSignUp";
 import { useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
+import { useCookies } from "react-cookie";
 
 const reg = {
   regPs: new RegExp(
@@ -14,7 +16,9 @@ const reg = {
   regNickname: new RegExp(/^(?=.*[a-z0-9가-힣])[a-z0-9가-힣-_]{2,12}$/),
 };
 const SignUp = () => {
-  const navigate = useNavigate()
+  const [, setAccessCookie] = useCookies(["accessToken"]);
+  const [, setRefreshCookie] = useCookies(["refreshToken"]);
+  const navigate = useNavigate();
   const [userData, setUserData] = useInput({
     email: "",
     password: "",
@@ -28,6 +32,7 @@ const SignUp = () => {
   const [rePsCheck, setRePsCheck] = useState(false);
   const [nikCheck, setNickCheck] = useState(false);
   const [alertMs, setAlertMs] = useState("");
+
   useEffect(() => {
     setAlertMs("");
   }, [userData]);
@@ -120,38 +125,57 @@ const SignUp = () => {
     [userData.nickname]
   );
 
-  const signUpHandle = useCallback( async() => {
-    if (
-      userData.email === "" ||
-      userData.password === "" ||
-      userData.passwordCheck === "" ||
-      userData.nickname === ""
-    ) {
-      setAlertMs("아직 입력되지 않은 부분이 있습니다");
-      return;
-    }
-    if (
-      emailDupStatus &&
-      nickDupStatus &&
-      !emailCheck &&
-      !psCheck &&
-      !rePsCheck
-    ) {
-      const signData = {
-        emailId: userData.email,
-        password: userData.password,
-        nickname: userData.nickname,
-      };
-      try {
-        const response = await signUp(signData);
-        if (response === 201) navigate("/main",{replace:true})
-      } catch (err) {
-        console.log(err);
-        setAlertMs("회원가입에 실패하였습니다. 잠시후 다시 실행해주세요");
+  const signUpHandle = useCallback(
+    debounce(async () => {
+      if (
+        userData.email === "" ||
+        userData.password === "" ||
+        userData.passwordCheck === "" ||
+        userData.nickname === ""
+      ) {
+        setAlertMs("아직 입력되지 않은 부분이 있습니다");
+        return;
       }
-      
-    }
-  },[userData]);
+      if (
+        emailDupStatus &&
+        nickDupStatus &&
+        !emailCheck &&
+        !psCheck &&
+        !rePsCheck
+      ) {
+        const signData = {
+          emailId: userData.email,
+          password: userData.password,
+          nickname: userData.nickname,
+        };
+
+        try {
+          const response = await signUp(signData);
+          if (response === 201) {
+            const loginData = {
+              emailId: userData.email,
+              password: userData.password,
+            };
+            try {
+              const res = await login(loginData);
+              if(res.status===201){
+                setAccessCookie("accessToken", res.data.accessToken);
+                setRefreshCookie("refreshToken", res.data.refreshToken);
+                sessionStorage.setItem("emailId",res.data.emailId)
+                navigate("/main",{replace:true})
+              }
+            } catch (err) {
+              alert("서버와 접속이 끊어졌습니다. 다시 로그인 해주세요")
+            }
+          }
+        } catch (err) {
+          console.log(err);
+          setAlertMs("회원가입에 실패하였습니다. 잠시후 다시 실행해주세요");
+        }
+      }
+    }, 1500),
+    [userData]
+  );
 
   return (
     <div>
@@ -168,6 +192,7 @@ const SignUp = () => {
             type="text"
             placeholder="E-Mail"
             name="email"
+            autoComplete="off"
             onChange={setUserData}
             onBlur={emailCheckHandle}
           />
@@ -200,6 +225,7 @@ const SignUp = () => {
             type="text"
             placeholder="Nickname"
             name="nickname"
+            autoComplete="off"
             maxLength={12}
             onChange={setUserData}
             onBlur={nickCheckHandle}

@@ -1,7 +1,46 @@
+import { debounce } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
-import styles from "../../styles/home/homeModal.module.css"
+import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../api";
+import useInput from "../../hooks/useInput";
+import styles from "../../styles/home/homeModal.module.css";
 import KakaoSignUp from "./KakaoSignUp";
 const Login = () => {
+  const [, setAccessCookie] = useCookies(["accessToken"]);
+  const [, setRefreshCookie] = useCookies(["refreshToken"]);
+  const navigate = useNavigate();
+  const [userData, setUserData] = useInput({
+    emailId: "",
+    password: "",
+  });
+  const [loginFailMs, setLoginFailMs] = useState("");
+
+  useEffect(() => {
+    setLoginFailMs("");
+  }, [userData]);
+
+  const loginHandle = useCallback(
+    debounce(async () => {
+      if (userData.emailId === "" || userData.password === "") {
+        setLoginFailMs("아직 입력되지 않은부분이 있습니다");
+        return;
+      }
+      try {
+        const response = await login(userData);
+        if (response.status === 201) {
+          setAccessCookie("accessToken", response.data.accessToken);
+          setRefreshCookie("refreshToken", response.data.refreshToken);
+          sessionStorage.setItem("emailId", response.data.emailId);
+          navigate("/main", { replace: true });
+        }
+      } catch (err) {
+        setLoginFailMs("E-Mail 또는 비밀번호가 올바르지 않습니다");
+      }
+    }, 1500),
+    [userData]
+  );
+
   return (
     <div>
       <div className={styles.logoImg}>
@@ -16,7 +55,9 @@ const Login = () => {
           <input
             type="text"
             placeholder="E-Mail"
-            name="email"
+            name="emailId"
+            autoComplete="off"
+            onChange={setUserData}
           />
         </div>
         <div>
@@ -25,9 +66,11 @@ const Login = () => {
             placeholder="Password"
             name="password"
             maxLength={14}
+            onChange={setUserData}
           />
         </div>
-        <button>로그인</button>
+        {userData !== "" && <p>{loginFailMs}</p>}
+        <button onClick={loginHandle}>로그인</button>
       </div>
       <KakaoSignUp />
     </div>
