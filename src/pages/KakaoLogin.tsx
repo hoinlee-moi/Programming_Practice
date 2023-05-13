@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 const KakaoLogin = () => {
   const PARAMS = new URL(document.location.href).searchParams;
   const CODE = PARAMS.get("code");
-  const [accessCookie,setAccessCookie] = useCookies(['accessToken'])
-  const [refreshCookie,setRefreshCookie] = useCookies(['refreshToken'])
+  const [,setAccessCookie] = useCookies(['accessToken'])
+  const [,setRefreshCookie] = useCookies(['refreshToken'])
   const navigate = useNavigate()
 
   useEffect(() => {

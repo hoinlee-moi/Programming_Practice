@@ -9,7 +9,7 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-div,article{
+div,article,section{
   box-sizing: border-box;
 }
 h1,h2,p,span{

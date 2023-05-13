@@ -1,0 +1,149 @@
+.floatingContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #fff;
+}
+.menuWrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: inherit;
+  height: inherit;
+  transform: translateX(0);
+  transition: 0.5s;
+  border-right: 1px solid #d4d4d4;
+  opacity: 1;
+}
+.menuWrapOff {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 0;
+}
+
+.logoBox {
+  position: relative;
+  height: 120px;
+}
+.logoBox img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 100%;
+  object-fit: fill;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+.menuListBox {
+  margin-top: 50px;
+}
+.menuListBox ul {
+  width: 100%;
+}
+.menuListBox ul li {
+  width: 100%;
+  margin: 0 0 30px 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.menuListBox ul li:before {
+  margin-right: 20px;
+  font-size: 28px;
+}
+.menuListBox ul li:nth-child(1):before {
+  content: "\f015";
+  font-family: fontawesome;
+}
+.menuListBox ul li:nth-child(2):before {
+  content: "\f002";
+  font-family: fontawesome;
+}
+.menuListBox ul li:nth-child(3):before {
+  content: "\f0fe";
+  font-family: fontawesome;
+}
+.menuListBox ul li:nth-child(4):before {
+  content: "\f007";
+  font-family: fontawesome;
+}
+
+
+/* 검색 메뉴 */
+
+.searchWrap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 350px;
+  height: inherit;
+  transform: translateX(-100%);
+  transition: 0.5s;
+  box-shadow: 2px 2px 5px gray;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #fff;
+  opacity: 0;
+}
+
+.searchWrapOn {
+  transform: translateX(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.searchWrap>span{
+  position: absolute;
+  top: 5;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.searchWrap>span::after {
+  content: "\f00d";
+  font-family: fontawesome;
+}
+
+.searchWrapOn>h2 {
+  padding: 30px 30px 10px 30px;
+}
+.searchInput {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  padding: 0 20px;
+  border-bottom: 1px solid #d4d4d4;
+}
+.searchInput input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 15px;
+  border-radius: 7px;
+  background-color: #F5F6F7;
+  outline: none;
+}
+input[type="text"] {
+  padding-right: 30px;
+}
+.searchInput span {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+}
+.searchInput span:after {
+  content: "\f002";
+  font-family: fontawesome;
+ 
+}
+.searchContent h3 {
+  padding: 10px;
+}
