@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/home/homeModal.module.css";
 import Login from "./Login";
 import SignUp from "./SignUp";
@@ -20,7 +21,9 @@ const HomeModal = ({ content, modalClose }: modalPorps) => {
         className={styles.modalContent}
         onMouseDown={(e) => e.stopPropagation()}
       >
-        <span onClick={() => modalClose(false)} />
+        <span onClick={() => modalClose(false)}>
+        <FontAwesomeIcon icon={faXmark} />
+        </span>
         {content === "signUp" ? <SignUp /> : <Login />}
       </section>
     </div>

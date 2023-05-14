@@ -1,6 +1,7 @@
 .sectionContainer01 {
   position: relative;
   height: 100vh;
+  background-color: #FEFCF8;
 }
 .contentSection {
   position: absolute;
@@ -148,18 +149,13 @@
   height: 50px;
   background-color: #ffaaa1;
 }
-.blurSection div p {
+.blurSection div p , .icon {
   color: white;
   font-size: 18px;
   font-weight: 600;
   animation: downAni 1.5s infinite ease-in-out;
 }
-.blurSection div p:after {
-  content: "\f107";
-  font-family: fontawesome;
-  margin-left: 10px;
-  
-}
+
 
 @keyframes contentAni {
   0%,

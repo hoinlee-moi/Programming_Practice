@@ -7,6 +7,7 @@ import KakaoSignUp from "./KakaoSignUp";
 import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { useCookies } from "react-cookie";
+import InputWithIcon from "./InputWithIcon";
 
 const reg = {
   regPs: new RegExp(
@@ -158,14 +159,14 @@ const SignUp = () => {
             };
             try {
               const res = await login(loginData);
-              if(res.status===201){
+              if (res.status === 201) {
                 setAccessCookie("accessToken", res.data.accessToken);
                 setRefreshCookie("refreshToken", res.data.refreshToken);
-                sessionStorage.setItem("emailId",res.data.emailId)
-                navigate("/main",{replace:true})
+                sessionStorage.setItem("emailId", res.data.emailId);
+                navigate("/main", { replace: true });
               }
             } catch (err) {
-              alert("서버와 접속이 끊어졌습니다. 다시 로그인 해주세요")
+              alert("서버와 접속이 끊어졌습니다. 다시 로그인 해주세요");
             }
           }
         } catch (err) {
@@ -183,55 +184,46 @@ const SignUp = () => {
         <img src={`${process.env.PUBLIC_URL}/assets/logoPic.png`} />
       </div>
       <div className={styles.signUpContent}>
-        <h1>해바라기에 오신 것을 환영합니다</h1>
+        <h1>오태식에 오신 것을 환영합니다</h1>
         <p>꼭 그렇게 다 먹어야만 속이 후련했냐</p>
       </div>
       <div className={styles.signUpInput}>
-        <div>
-          <input
-            type="text"
-            placeholder="E-Mail"
-            name="email"
-            autoComplete="off"
-            onChange={setUserData}
-            onBlur={emailCheckHandle}
-          />
-          {emailCheck && <span />}
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            maxLength={14}
-            onChange={setUserData}
-            onBlur={checkSignUpData}
-          />
-          {psCheck && <span />}
-        </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Re-enter password"
-            name="passwordCheck"
-            maxLength={14}
-            onChange={setUserData}
-            onBlur={checkSignUpData}
-          />
-          {rePsCheck && <span />}
-        </div>
-        <div>
-          <input
-            type="text"
-            placeholder="Nickname"
-            name="nickname"
-            autoComplete="off"
-            maxLength={12}
-            onChange={setUserData}
-            onBlur={nickCheckHandle}
-          />
-          {nikCheck && <span />}
-        </div>
+        <InputWithIcon
+          type="text"
+          placeholder="E-Mail"
+          name="email"
+          onChange={setUserData}
+          onBlur={emailCheckHandle}
+          checkState={emailCheck}
+        />
+        <InputWithIcon
+          type="password"
+          placeholder="Password"
+          name="password"
+          maxLength={14}
+          onChange={setUserData}
+          onBlur={checkSignUpData}
+          checkState={psCheck}
+        />
+
+        <InputWithIcon
+          type="password"
+          placeholder="Re-enter password"
+          name="passwordCheck"
+          maxLength={14}
+          onChange={setUserData}
+          onBlur={checkSignUpData}
+          checkState={rePsCheck}
+        />
+        <InputWithIcon
+          type="text"
+          placeholder="Nickname"
+          name="nickname"
+          maxLength={12}
+          onChange={setUserData}
+          onBlur={nickCheckHandle}
+          checkState={nikCheck}
+        />
         {alertMs !== "" && <p>{alertMs}</p>}
         <button onClick={signUpHandle}>회원가입</button>
       </div>

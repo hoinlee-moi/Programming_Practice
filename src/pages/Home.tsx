@@ -12,6 +12,13 @@ const Home = () => {
   const [modalState, setModalState] = useState(false);
   const [modalContent, setModalContent] = useState("");
 
+  useEffect(()=>{
+    document.body.style.overflow = "hidden"
+    return ()=>{
+      document.body.style.overflow = "visible"
+    }
+  },[])
+
   useEffect(() => {
     const wheelHandler = (e: WheelEvent) => {
       e.preventDefault();

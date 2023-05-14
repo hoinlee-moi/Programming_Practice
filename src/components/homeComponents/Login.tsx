@@ -1,14 +1,13 @@
 import { debounce } from "lodash";
 import React, { useCallback, useEffect, useState } from "react";
-import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../api";
+import { setCookie } from "../../etc/cookie";
 import useInput from "../../hooks/useInput";
 import styles from "../../styles/home/homeModal.module.css";
 import KakaoSignUp from "./KakaoSignUp";
 const Login = () => {
-  const [, setAccessCookie] = useCookies(["accessToken"]);
-  const [, setRefreshCookie] = useCookies(["refreshToken"]);
+
   const navigate = useNavigate();
   const [userData, setUserData] = useInput({
     emailId: "",
@@ -29,8 +28,8 @@ const Login = () => {
       try {
         const response = await login(userData);
         if (response.status === 201) {
-          setAccessCookie("accessToken", response.data.accessToken);
-          setRefreshCookie("refreshToken", response.data.refreshToken);
+          setCookie("accessToken", response.data.accessToken);
+          setCookie("refreshToken", response.data.refreshToken);
           sessionStorage.setItem("emailId", response.data.emailId);
           navigate("/main", { replace: true });
         }
@@ -47,7 +46,7 @@ const Login = () => {
         <img src={`${process.env.PUBLIC_URL}/assets/logoPic.png`} />
       </div>
       <div className={styles.loginContent}>
-        <h1>해바라기에 오신 것을 환영합니다</h1>
+        <h1>오태식에 오신 것을 환영합니다</h1>
         <p>꼭 그렇게 다 먹어야만 속이 후련했냐</p>
       </div>
       <div className={styles.loginInput}>

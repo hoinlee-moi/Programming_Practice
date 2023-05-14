@@ -3,9 +3,9 @@
   top: 0;
   left: 0;
   z-index: 0;
-  width: 250px;
+  width: 350px;
   height: 100vh;
-  background-color: #fff;
+  background-color: #F5F6F7;
 }
 .menuWrap {
   position: absolute;
@@ -17,6 +17,7 @@
   transform: translateX(0);
   transition: 0.5s;
   border-right: 1px solid #d4d4d4;
+  background-color: #fff;
   opacity: 1;
 }
 .menuWrapOff {
@@ -30,13 +31,11 @@
   height: 120px;
 }
 .logoBox img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 200px;
+  width: 300px;
   height: 100%;
-  object-fit: fill;
-  transform: translate(-50%, -50%) scale(1.5);
+  margin-left: 20px;
+  object-fit: cover;
+ 
 }
 .menuListBox {
   margin-top: 50px;
@@ -47,15 +46,18 @@
 .menuListBox ul li {
   width: 100%;
   margin: 0 0 30px 20px;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #554735 ;
   cursor: pointer;
 }
 .menuListBox ul li:before {
   margin-right: 20px;
-  font-size: 28px;
+  font-size: 25px;
+  color: #ffd6a1 ;
 }
 .menuListBox ul li:nth-child(1):before {
-  content: "\f015";
+  content: "\e3af";
   font-family: fontawesome;
 }
 .menuListBox ul li:nth-child(2):before {
@@ -103,10 +105,6 @@
   font-size: 20px;
   cursor: pointer;
 }
-.searchWrap>span::after {
-  content: "\f00d";
-  font-family: fontawesome;
-}
 
 .searchWrapOn>h2 {
   padding: 30px 30px 10px 30px;
@@ -128,7 +126,7 @@
   background-color: #F5F6F7;
   outline: none;
 }
-input[type="text"] {
+.searchInput input[type="text"] {
   padding-right: 30px;
 }
 .searchInput span {
@@ -138,11 +136,6 @@ input[type="text"] {
   transform: translateY(-50%);
   font-size: 20px;
   cursor: pointer;
-}
-.searchInput span:after {
-  content: "\f002";
-  font-family: fontawesome;
- 
 }
 .searchContent h3 {
   padding: 10px;

@@ -1,4 +1,6 @@
 import React,{ useEffect, useState } from "react";
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../../styles/home/homeSection01.module.css";
 import ImageArray from "./ImageArray";
 
@@ -43,6 +45,7 @@ const HomeSection01 = () => {
       <article className={styles.blurSection}>
         <div>
           <p>스크롤을 아래로 내려주세요</p>
+          <FontAwesomeIcon className={styles.icon} icon={faAngleDown} />
         </div>
       </article>
     </section>
