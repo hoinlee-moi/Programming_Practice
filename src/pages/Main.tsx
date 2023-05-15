@@ -13,10 +13,13 @@ const Main = () => {
 
   useEffect(() => {
     // 메인화면 접속시 현재 유저의데이터를 세션 스토리지에 저장, 토큰이 있는지 1차로 확인, 서버 연결로 토큰이 올바른지 2차 확인
+    window.onbeforeunload = () => {
+      window.scrollTo(0, 0);
+    };
   }, []);
   return (
     <div className={styles.mainContainer}>
-        <FloatingMenu />     
+      <FloatingMenu />
       <section className={styles.boardContainer}>{element}</section>
     </div>
   );
