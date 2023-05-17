@@ -1,18 +1,20 @@
-import React, { useRef, useEffect, useState, useCallback } from "react";
-import { useRecoilState } from "recoil";
+import React, { useEffect, useState, useCallback } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { getBoardPostList } from "../../api";
 import useObserver from "../../hooks/useObserve";
-import { boardItemListState } from "../../recoil/recoilState";
+import { boardItemListState, postDetailModal } from "../../recoil/recoilState";
 import styles from "../../styles/board/mainBoard.module.css";
 import PostItem from "./PostItem";
 import _, { debounce, divide } from "lodash";
 import { dummy } from "../../dummy";
+import PostDetail from "./PostDetail";
 
 const MainBoard = () => {
   const [boardItemList, setBoardItemList] = useRecoilState(boardItemListState);
+  const detailModal = useRecoilValue(postDetailModal)
   const [observer, setObserver] = useObserver(
     async (entry: any, observer: any) => {
-      debounceHandleScroll()
+      debounceHandleScroll();
     },
     {}
   );
@@ -46,15 +48,16 @@ const MainBoard = () => {
 
   return (
     <div className={styles.postItemWrap}>
+      {detailModal.modal&& <PostDetail />}
       {boardItemList.map((item, idx) => {
         let style = styles.postItemBox;
         if (idx % 2 === 0) {
           style = styles.postItemBox2;
         }
         return (
-          <div className={style}>
-            {item.map((val, id) => {
-              return <PostItem listItem={val} />;
+          <div className={style} key={idx}>
+            {item.map((val) => {
+              return <PostItem listItem={val} key={val.postId} />;
             })}
           </div>
         );

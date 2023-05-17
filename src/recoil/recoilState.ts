@@ -5,3 +5,11 @@ export const boardItemListState = atom({
     key:"boardItemList",
     default : dummy
 })
+
+export const postDetailModal = atom({
+    key:"postDetail",
+    default : {
+        modal : false,
+        postId : 0
+    }
+})

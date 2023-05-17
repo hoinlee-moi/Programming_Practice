@@ -61,12 +61,31 @@ export const login = async (userData: loginData) => {
 
 export const getBoardPostList = async (page: number) => {
   try {
-    const response = await axios.get(`test/posts?page=${page}`, {
-      headers: {
-        Authorization: `Bearer ${getCookie("accessToken")}`,
-      },
-    });
+    const response = await axios.get(
+      `http://52.79.35.132:8080/posts?page=${page}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+      }
+    );
     return response;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const getDetailPost = async (postId: number) => {
+  try {
+    const response = await axios.get(
+      `http://52.79.35.132:8080/posts/${postId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${getCookie("accessToken")}`,
+        },
+      }
+    );
+    return response
   } catch (err) {
     throw err;
   }

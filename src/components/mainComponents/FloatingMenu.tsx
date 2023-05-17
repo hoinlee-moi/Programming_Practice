@@ -14,7 +14,6 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 const FloatingMenu = () => {
   const navigate = useNavigate();
   const [searchState, setSearchState] = useState(false);
-  console.log(searchState);
   return (
     <section className={styles.floatingContainer}>
       <FloatingSearch onState={searchState} closeSearch={setSearchState} />
