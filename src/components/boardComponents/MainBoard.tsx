@@ -8,10 +8,11 @@ import PostItem from "./PostItem";
 import _, { debounce, divide } from "lodash";
 import { dummy } from "../../dummy";
 import PostDetail from "./PostDetail";
+import Loading from "../Loading";
 
 const MainBoard = () => {
   const [boardItemList, setBoardItemList] = useRecoilState(boardItemListState);
-  const detailModal = useRecoilValue(postDetailModal)
+  const detailModal = useRecoilValue(postDetailModal);
   const [observer, setObserver] = useObserver(
     async (entry: any, observer: any) => {
       debounceHandleScroll();
@@ -28,7 +29,6 @@ const MainBoard = () => {
   const debounceHandleScroll = debounce(async () => {
     await getPostList();
     await setPage((prevPage) => prevPage + 1);
-    console.log("끝", page);
   }, 1000);
 
   const getPostList = useCallback(async () => {
@@ -48,7 +48,7 @@ const MainBoard = () => {
 
   return (
     <div className={styles.postItemWrap}>
-      {detailModal.modal&& <PostDetail />}
+      {detailModal.modal && <PostDetail />}
       {boardItemList.map((item, idx) => {
         let style = styles.postItemBox;
         if (idx % 2 === 0) {
@@ -64,9 +64,7 @@ const MainBoard = () => {
       })}
       {loading && (
         <div ref={setObserver} className={styles.ListLoading}>
-          <svg>
-            <circle cx="50%" cy="50%" r="25"></circle>
-          </svg>
+          <Loading />
         </div>
       )}
     </div>

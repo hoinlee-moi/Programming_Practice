@@ -1,21 +1,37 @@
 .modalBack {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    cursor: auto;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: auto;
 }
 .modalContent {
-    width: 90%;
-    max-height: 90%;
-    aspect-ratio: 1/1;
-    border-radius: 10px;
-    background-color: rgb(240, 240, 240);
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
+  overflow: hidden;
+}
+.imgWrap,
+.contentWrap {
+  width: 50%;
+  height: 100%;
+  
+}
+.imgWrap {
+    background-color: #202020;
+}
+.imgWrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
