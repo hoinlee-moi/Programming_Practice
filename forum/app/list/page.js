@@ -1,24 +1,21 @@
-import { connectDB } from "@/util/database";
 import Link from "next/link";
 import DetailLink from "./DetailLink";
+import { connectDB } from "@/util/database";
+import handler from "@/pages/api/list";
+import ListItem from "./ListItem";
 
 export default async function List() {
+  // let result = await fetch(handler)
   const db = (await connectDB).db("forum");
   let result = await db.collection("post").find().toArray();
-
+  result = result.map(item=>{
+    item._id = item._id.toString()
+    return item
+  })
   return (
     <div className="list-bg">
-      {result.map((item, idx) => {
-        return (
-          <div className="list-item" id={idx}>
-              <Link prefetch={false} href={`/detail/${item._id}`}>
-              <h4>{item.title}</h4>
-          </Link>
-              <p>{item.content}</p>
-              <DetailLink/>
-            </div>
-        );
-      })}
+      <ListItem result={result}/>
     </div>
   );
 }
+
