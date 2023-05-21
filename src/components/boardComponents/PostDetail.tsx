@@ -64,7 +64,10 @@ const PostDetail = () => {
     const imgEle = imgRef.current;
     if (parentEle && imgEle) {
       const { naturalWidth, naturalHeight } = imgEle;
-      const parentWidth = parentEle.offsetWidth;
+      // const parentWidth = parentEle.offsetWidth;
+      // const calculatedWidth = parentWidth < naturalWidth ? parentWidth : naturalWidth;
+
+      // parentEle.style.width = `${calculatedWidth}px`;
       parentEle.style.aspectRatio = `${naturalWidth}/${naturalHeight}`;
 
     }
@@ -84,7 +87,13 @@ const PostDetail = () => {
             <section className={styles.imgWrap}>
               <img src={data.postImageUrls} ref={imgRef} />
             </section>
-            <section className={styles.contentWrap}></section>
+            <section className={styles.contentWrap}>
+              <div>
+                <div>
+                  <img src="" alt="" />
+                </div>
+              </div>
+            </section>
           </>
         )}
       </div>

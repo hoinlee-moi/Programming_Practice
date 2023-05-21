@@ -1,11 +1,40 @@
 export const dummy = [
   [
+    // {
+    //   conmments: [
+    //     {
+    //       commentContent: "맛있어보이네요!",
+    //       createAt: "2023-05-16",
+    //       nickname: "식객",
+    //       userImageUrl: `${process.env.PUBLIC_URL}/assets/profileprofile-2.png`,
+    //     },
+    //     {
+    //       commentContent: "오!",
+    //       createAt: "2023-05-14",
+    //       nickname: "맛도리",
+    //       userImageUrl: `${process.env.PUBLIC_URL}/assets/profileprofile-5.png`,
+    //     },
+    //   ],
+    //   createAt: "2023-05-13",
+    //   postId: 1,
+    //   postImageUrls: `${process.env.PUBLIC_URL}/assets/main/main_food_0.jpeg`,
+    //   postLikeCounts: 1,
+    //   commentCounts: 12135,
+    //   nuKcal: 1023,
+    //   nuCarbs: string,
+    //   nuFat: string,
+    //   nuKcal: string,
+    //   menuList: "메뉴1",
+    //   nickname: "모아이",
+    //   nuProtein: string,
+    //   postContents: string,
+    // },
     {
-      postId: 1,
+      postId: 1542,
       postImageUrls: `${process.env.PUBLIC_URL}/assets/main/main_food_0.jpeg`,
       postLikeCounts: 1,
-      commentCounts: 12135,
-      nuKcal: 1023,
+      commentCounts: 1,
+      nuKcal: 2322,
     },
     {
       postId: 424,
