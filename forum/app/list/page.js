@@ -4,6 +4,8 @@ import { connectDB } from "@/util/database";
 import handler from "@/pages/api/list";
 import ListItem from "./ListItem";
 
+export const dynamic = 'force-dynamic'
+
 export default async function List() {
   // let result = await fetch(handler)
   const db = (await connectDB).db("forum");
