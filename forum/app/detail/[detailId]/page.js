@@ -12,7 +12,7 @@ export default async function Detail(props) {
             <h4>{result.title}</h4>
             <p>{result.content}</p>
             <p>{time}</p>
-            <Comment />
+            <Comment parentId={result._id.toString()}/>
         </div>
     )
 }
