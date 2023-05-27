@@ -1,5 +1,4 @@
 import { MongoClient } from 'mongodb'
-// const url = `mongodb+srv://admin_214:qwer1234@cluster0.yrtepdc.mongodb.net/test`
 const url = `mongodb+srv://admin_214:${process.env.NEXT_PUBLIC_MONGO_PASSWORD}@cluster0.yrtepdc.mongodb.net/`
 const options = { useNewUrlParser: true }
 let connectDB
