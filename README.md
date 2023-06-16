@@ -10,15 +10,14 @@ JavaScript / Vue.js / jQuery 3.6.0<br>
 <a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
 <br>
 
-### 2**. 오늘 내가 택한 식단   [프로젝트 상세 정보 보러 가기](https://github.com/hoinlee-moi/sunFlower)**  - 프로젝트 진행중
+### 2**. OTS  ) - [배포사이트](https://ots-amber.vercel.app/)**  
 
-> 식단관리 SNS (2인 팀 프로젝트-프론트엔드)개발기간 : 2023-03-13 ~
+> 식단관리 SNS (1인개발)개발기간 : 2023-05-20 ~ 2023-06-10
 > 
 - 기술 스택
-    - Java / Spring Boot / Gradle / JWT
-    - React / TypeScript / React-router-dom / Axios / recoil / react-cookie
+React 18 / Next.js 13.4 / TypeScript 5 / MongoDB 5.5 /  Axios 1.4 / bcrypt  5.1
 <br>
-<a href="https://github.com/hoinlee-moi/sunFlower">프로젝트 상세정보</a><br>
+<a href="https://github.com/hoinlee-moi/OTS">프로젝트 상세 정보 보러 가기</a><br>
 <br>
 
 ### 📱MINI
