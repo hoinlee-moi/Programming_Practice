@@ -10,7 +10,7 @@ JavaScript / Vue.js / jQuery 3.6.0<br>
 <a href="https://github.com/hoinlee-moi/gogumaketFrontEnd">프로젝트 상세정보</a><br>
 <br>
 
-### 2 **. OTS - [배포사이트](https://ots-amber.vercel.app/) **  
+### 2  OTS - [배포사이트](https://ots-amber.vercel.app/) 
 
 > 식단관리 SNS (1인개발)개발기간 : 2023-05-20 ~ 2023-06-10
 > 
