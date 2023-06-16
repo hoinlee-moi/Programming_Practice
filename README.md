@@ -17,7 +17,7 @@ JavaScript / Vue.js / jQuery 3.6.0<br>
 - 기술 스택
 React 18 / Next.js 13.4 / TypeScript 5 / MongoDB 5.5 /  Axios 1.4 / bcrypt  5.1
 <br>
-<a href="https://github.com/hoinlee-moi/OTS">프로젝트 상세 정보 보러 가기</a><br>
+<a href="https://github.com/hoinlee-moi/OTS">프로젝트 상세 정보</a><br>
 <br>
 
 ### 📱MINI
