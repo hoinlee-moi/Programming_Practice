@@ -8,8 +8,11 @@
 <br>
 참고페이지 - pinterest, instagram
 <br>
-사이트 미리보기
-
+### **사이트 미리보기**<br>
+<img src="./Readme_gif/OTS-GIF.gif" width="220" height="150">
+<img src="./Readme_gif/OTS-GIF(3).gif" width="220" height="150">
+<img src="./Readme_gif/OTS-GIF(2).gif" width="220" height="150">
+<img src="./Readme_gif/OTS-preview(3).png" width="100" height="150">
 <br>
 
 >## 1. 제작기간 & 참여인원
@@ -51,7 +54,8 @@ Back-end
 - 이번 프로젝트에선 슬라이드 형식의 스크롤 애니메이션을 사용하고 싶어 useEffect와 useState를 이용해 휠 이벤트가 일어날 시 한 섹션씩 이동하도록 했습니다.
 - 휠 이벤트이기 때문에 보통 유저는 휠을 여러번씩 사용한다 예상하여 state값을 추적, 섹션 이동이 완전히 끝나기 전엔 이벤트가 실행되지 않도록 했습니다.
 - header의 고정된 nav bar에 로그인 회원가입 버튼을 붙여 페이지 이동 없이 로그인, 회원가입이 가능하도록 했습니다.
-- keyframe 애니메이션과 딜레이를 계산하여 첫번째 section에서 이미지들이 로딩되도록 했습니다. 이후 setTimeOut을 통해 state값을 관리하여 이미지 애니메이션이 무한히 지속되도록 했습니다.
+- keyframe 애니메이션과 딜레이를 계산하여 첫번째 section에서 이미지들이 로딩되도록 했습니다. 이후 setTimeOut을 통해 state값을 관리하여 이미지 애니메이션이 무한히 지속되도록 했습니다.<br>
+<img src="./Readme_gif/OTS-GIF.gif" width="300" height="200">
 
 </details>
 
@@ -95,7 +99,9 @@ update를 사용할 땐 세션에 저장된 id정보와 각 게시글과 댓글�
 - state값을 통해 모달창을 컨트롤 하도록 하였고 drag&drop기능을 이용한 이미지 파일을 받도록 했습니다.
 - 이미지 데이터가 저장되기 전 클라이언트에서 firebase에 접속 이미지 파일들을 저장하고 url을 다시 받아 db에 저장되도록 구현하였습니다.
 - 오픈API를 통해 음식의 영양 성분과 칼로리를 가져오고 선택한 음식 데이터 값들과 총 합을 따로 계산하여 저장될 수 있도록 했습니다.
-- 수정과 삭제시는 서버와 클라이언트 양쪽에서 유저 검사를 하도록 진행했습니다.
+- 수정과 삭제시는 서버와 클라이언트 양쪽에서 유저 검사를 하도록 진행했습니다.<br>
+<img src="./Readme_gif/OTS-GIF(3).gif" width="300" height="200">
+<img src="./Readme_gif/OTS-GIF(2).gif" width="300" height="200">
 </details>
 
 <br><br>
@@ -227,6 +233,8 @@ Next.js와 react, mongoDB를 사용해서 프로젝트 만든 후 vercel을 통�
 - native 공부를 시작해서 유저가 웹과 앱 둘 다 경험할 수 있는 프로젝트를 진행하고 싶다.
   </details>
 
+
+<br><br>
 ---
 
 # :sweet_potato: **GogumacatFrontEnd**
@@ -236,6 +244,11 @@ Next.js와 react, mongoDB를 사용해서 프로젝트 만든 후 vercel을 통�
 
 
 <br>
+
+### 사이트 미리보기
+<img src="./Readme_gif/ezgif-4-8dc19e4aae.gif" width="270" height="170">
+<img src="./Readme_gif/ezgif-4-9e6ae07206.gif" width="270" height="170">
+<img src="./Readme_gif/ezgif-5-a0b3c7fbad.gif" width="270" height="170">
 <br>
 <br>
 
