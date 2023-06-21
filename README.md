@@ -9,10 +9,16 @@
 참고페이지 - pinterest, instagram
 <br>
 ### **사이트 미리보기**<br>
-<img src="./Readme_gif/OTS-GIF.gif" width="220" height="150">
+<div style="display:flex">
+  <img src="./Readme_gif/OTS-GIF.gif" width="220" height="150" style="margin-right:40px">
 <img src="./Readme_gif/OTS-GIF(3).gif" width="220" height="150">
-<img src="./Readme_gif/OTS-GIF(2).gif" width="220" height="150">
+</div>
+<div style="display:flex">
+  <img src="./Readme_gif/OTS-GIF(2).gif" width="220" height="150" style ="margin-right:40px">
 <img src="./Readme_gif/OTS-preview(3).png" width="100" height="150">
+</div>
+
+
 <br>
 
 >## 1. 제작기간 & 참여인원
@@ -246,9 +252,11 @@ Next.js와 react, mongoDB를 사용해서 프로젝트 만든 후 vercel을 통�
 <br>
 
 ### 사이트 미리보기
-<img src="./Readme_gif/ezgif-4-8dc19e4aae.gif" width="270" height="170">
-<img src="./Readme_gif/ezgif-4-9e6ae07206.gif" width="270" height="170">
+<div style="display:flex">
+<img src="./Readme_gif/ezgif-4-8dc19e4aae.gif" width="270" height="170" style="margin-right:40px" >
+<img src="./Readme_gif/ezgif-4-9e6ae07206.gif" width="270" height="170" style="margin-right:40px" >
 <img src="./Readme_gif/ezgif-5-a0b3c7fbad.gif" width="270" height="170">
+</div>
 <br>
 <br>
 
