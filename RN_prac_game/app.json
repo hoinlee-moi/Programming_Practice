@@ -3,7 +3,7 @@
     "name": "RN_prac_game",
     "slug": "RN_prac_game",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
