@@ -1,0 +1,4 @@
+{
+    "prettier.useEditorConfig": true,
+    "python.analysis.enablePytestSupport": false
+}
