@@ -1,0 +1,83 @@
+/* 부모 요소 position : relative
+  자식 요소 position: absolute
+*/
+
+.parent {
+  background-color: dodgerblue;
+  width: 600px;
+  height: 300px;
+  position: relative;
+}
+
+.child {
+  background-color: crimson;
+  width: 200px;
+  height: 100px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+/* 자식요소 원하는 위치  */
+
+.parent-1 {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #000;
+  margin-top: 50px;
+}
+.parent-1 div {
+  position: absolute;
+  background-color: dodgerblue;
+  width: 100px;
+  height: 100px;
+  font-size: 20px;
+  text-align: center;
+}
+.child-0 {
+  /* 포지션 줬을 때 기본값  */
+  top: 0;
+  left: 0;
+}
+.child-1 {
+  bottom: 0;
+  left: 0;
+}
+.child-2 {
+  bottom: 0;
+  right: 0;
+}
+.child-3 {
+  top: 0;
+  right: 0;
+}
+.child-4 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.parent-2 {
+    position: relative;
+    border: 3px solid red;
+    width: 600px;
+    height: 300px;
+}
+
+.parent-2 div {
+    background-color: navy;
+    position: absolute;
+    width: 150px;
+    height: 100px;
+}
+.child_0 {
+    top: 100%;/*top : 300px*/
+}
+.child_1{
+    left: 100%;
+}
+.child_2 {
+    top: 100%;
+    left: 100%;
+}

@@ -1,0 +1,94 @@
+/* body {
+  background-color: white;
+}
+p.center {
+  text-align: left;
+  color: green;
+}
+.center {
+    text-align: center;
+    color: gray;
+}
+#center {
+  text-align: right;
+  color: blue;
+}
+
+h1 , p {
+    text-align: center;
+}
+
+p span {
+    text-align: red;
+}
+* {
+    font-size: 14px;
+    line-height: 24px;
+} */
+
+/* 적용 순서 */
+
+/* h1 {
+    color: red;
+}
+.text {
+    color: blue;
+}
+#text {
+    color: green;
+} */
+
+/* 서식관련 속성 */
+
+body {
+  font-size: 15px;
+  line-height: 1.6em;
+}
+h1 {
+  /* font-weight: normal; */
+  color: black;
+  /* # 3개가 6번 반복되면 3개만 치면됨 
+    rgb( 0, 0, 0 )
+    rgb( 0, 0, 0, 0.5) 투명도 50퍼
+  */
+  text-decoration: line-through;
+}
+a {
+    text-decoration: none;
+}
+p.text {
+  font-weight: bold;
+  font-style: italic;
+  text-align: justify;
+}
+p.copy {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.menu{
+    list-style: none;
+}
+.menu li:before {
+    content: '♥ ';
+}
+
+.box {
+    border: 1px solid red;
+    width: 400px;
+    height: 400px;
+}
+/* 스페이스바로 할 경우 박스 밑의 div는 모두 아래와 같이 처리 
+    > 사용할 경우 박스 바로 아래 div(자식)만 적용
+*/
+.box > div {
+    border: 1px solid blue;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+.box >div > div {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+}

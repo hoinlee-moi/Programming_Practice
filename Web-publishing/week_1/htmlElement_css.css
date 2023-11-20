@@ -1,0 +1,29 @@
+body {
+    color: black;
+    font-size: 30px;
+}
+a{
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    width: 300px;/*가질 수 없음*/
+    height: 300px;/*가질 수 없음*/
+    margin: 5px;/*상하 마진은 적용되지 않음*/
+    /* display: block; inline이지만 block으로 변경 가능 
+    text-align:center;
+    width: 200px;
+    border-radius: 5px;
+    padding: 5px; */
+   
+}
+
+div {
+    border: 1px solid red;
+    height: 100px;
+    margin: 50px;
+    /* width: 100%; 어차피 100%*/
+}
+img {
+    border: 1px solid red;
+    margin: 30px;
+}
